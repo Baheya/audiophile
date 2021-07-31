@@ -13,6 +13,7 @@ html {
     --grey-100: #FFFFFF;
     --grey-200: #FAFAFA;
     --grey-300: #F1F1F1;
+    --grey-400: #CFCFCF;
 
     --xs-and-up: 20em;
     --sm-and-up: 33.75em;
