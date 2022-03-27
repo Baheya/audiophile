@@ -14,6 +14,7 @@ html {
     --grey-200: #FAFAFA;
     --grey-300: #F1F1F1;
     --grey-400: #CFCFCF;
+    --grey-500: #818181;
 
     --xs-and-up: 20em;
     --sm-and-up: 33.75em;
@@ -23,7 +24,7 @@ html {
 }
 
 *, *:before, *:after {
-    box-sizing:inherit;
+    box-sizing:border-box;
 }
 
 body {
