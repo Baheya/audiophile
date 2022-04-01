@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-import { HeaderStyles } from '../../../Header/Header';
-import { NavigationMenuItem } from './NavigationMenuItem';
+import { HeaderStyles } from '../Header';
+import { NavigationItem } from './NavigationItem';
 
-import { constants } from '../../../../constants';
+import { constants } from '../../constants';
 
 const NavigationMenuListStyles = styled.ul.attrs({
   id: 'products-dropdown',
@@ -54,11 +54,11 @@ const NavigationMenuListStyles = styled.ul.attrs({
   }
 `;
 
-export function NavigationMenuList({ showNav, isBiggerThanTablet, className }) {
+export function NavigationList({ showNav, isBiggerThanTablet, className }) {
   return (
     <NavigationMenuListStyles className={className} showNav={showNav}>
       {constants.navigation.map((page, i) => (
-        <NavigationMenuItem
+        <NavigationItem
           key={i}
           pageName={page.name}
           pageImage={page.image}

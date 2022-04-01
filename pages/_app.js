@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'polished';
+import { Header } from '../components/Header';
+import { Footer } from '../components/Footer';
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -77,8 +79,10 @@ p, h1, h2, h3, h4, h5, h6 {
 function App({ Component, pageProps }) {
   return (
     <>
+      <Header />
       <Component {...pageProps} />
       <GlobalStyle />
+      <Footer />
     </>
   );
 }

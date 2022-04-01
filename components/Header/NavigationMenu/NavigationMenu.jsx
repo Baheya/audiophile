@@ -6,7 +6,7 @@ import { MenuButtonIcon } from '../../MenuButtonIcon';
 import { CartButtonIcon } from '../../CartButton';
 import { Logo } from '../../Logo';
 import { keyboardHandler } from '../../../utils/keyboardHandler';
-import { NavigationMenuList } from './NavigationMenuList';
+import { NavigationList } from '../../NavigationList';
 
 export const Nav = styled.nav`
   background-color: transparent;
@@ -107,7 +107,7 @@ export function NavigationMenu({ isBiggerThanTablet }) {
               <Logo />
             </StyledLink>
           </Link>
-          <NavigationMenuList
+          <NavigationList
             showNav={showNav}
             isBiggerThanTablet={isBiggerThanTablet}
           />
@@ -122,7 +122,7 @@ export function NavigationMenu({ isBiggerThanTablet }) {
           <MenuButton toggled={showNav} onClick={toggleNav}>
             <MenuButtonIcon />
           </MenuButton>
-          <NavigationMenuList
+          <NavigationList
             showNav={showNav}
             isBiggerThanTablet={isBiggerThanTablet}
           />
