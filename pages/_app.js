@@ -2,7 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'polished';
 
 const GlobalStyle = createGlobalStyle`
-${normalize()}
 html {
     box-sizing: border-box;
     font-size: 16px;
@@ -27,10 +26,51 @@ html {
     box-sizing:border-box;
 }
 
+* {
+  margin: 0;
+
+    &:focus {
+    outline: 1px solid var(--orange-200);
+    transition: outline-offset 0.25s ease;
+  }
+  &:focus:not(:active) {
+    outline: 1px solid var(--orange-200);
+    outline-offset: 5px;
+  }
+}
+
+html, body, #__next {
+  height: 100%;
+}
+
 body {
-    margin: 0;
     padding: 0;
     font-family: 'Manrope';
+    line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+#__next {
+  isolation: isolate;
+}
+
+@media (prefers-reduced-data: reduce) {
+  img, video {
+    display: none;
+  }
 }
 `;
 

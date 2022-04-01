@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import Link from 'next/link';
 
-import { ShopLink } from '../../ShopLink';
+import { ShopLink } from '../../../../ShopLink';
+import { HeaderStyles } from '../../../Header';
+import { NavigationLink } from '../../../../NavigationLink';
 
 const ListItem = styled.li`
   grid-column: 2 / -2;
@@ -23,9 +24,11 @@ const ListItem = styled.li`
     grid-column: auto;
   }
 
-  @media (min-width: 1024px) {
-    grid-column: none;
-    height: auto;
+  ${HeaderStyles} & {
+    @media (min-width: 1024px) {
+      grid-column: none;
+      height: auto;
+    }
   }
 `;
 
@@ -42,8 +45,10 @@ const ProductOverlay = styled.div`
   background-size: contain;
   z-index: 0;
 
-  @media (min-width: 1024px) {
-    display: none;
+  ${HeaderStyles} & {
+    @media (min-width: 1024px) {
+      display: none;
+    }
   }
 `;
 
@@ -58,32 +63,18 @@ const ProductBackground = styled.div`
   z-index: -1;
   border-radius: 10px;
 
-  @media (min-width: 1024px) {
-    display: none;
+  ${HeaderStyles} & {
+    @media (min-width: 1024px) {
+      display: none;
+    }
   }
 `;
 
-const StyledLink = styled.a`
-  text-transform: uppercase;
-  color: #fff;
-  text-decoration: none;
+const NavigationMenuLink = styled(NavigationLink)`
   font-size: 12px;
-
-  &:hover {
-    color: var(--orange-200);
-  }
-
-  &:focus {
-    outline: 1px solid var(--orange-200);
-    transition: outline-offset 0.25s ease;
-  }
-  &:focus:not(:active) {
-    outline: 1px solid var(--orange-200);
-    outline-offset: 5px;
-  }
 `;
 
-export function NavListItem({
+export function NavigationMenuItem({
   pageImage,
   pageName,
   isBiggerThanTablet,
@@ -108,11 +99,7 @@ export function NavListItem({
       ) : (
         isBiggerThanTablet && (
           <ListItem>
-            <Link href={pagePath} passHref>
-              <StyledLink className="nav-link" href={pagePath}>
-                {pageName}
-              </StyledLink>
-            </Link>
+            <NavigationMenuLink href={pagePath}>{pageName}</NavigationMenuLink>
           </ListItem>
         )
       )}

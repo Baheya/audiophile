@@ -1,1 +1,1 @@
-export { ShopButton } from './ShopButton';
+export { ProductButton } from './ProductButton';
