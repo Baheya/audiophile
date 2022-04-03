@@ -47,6 +47,8 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
 
   gap: 1.5rem;
 
@@ -56,6 +58,7 @@ const ContentWrapper = styled.div`
 
   @media (min-width: 1024px) {
     align-items: flex-start;
+    text-align: start;
   }
 `;
 
