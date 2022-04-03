@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
 
-import { NavigationMenuList } from '../components/NavigationList';
 import { ProductButton } from '../components/ProductButton';
-import { Header } from '../components/Header';
-import { Footer } from '../components/Footer';
+import { MissionStatement } from '../components/MissionStatement';
+import { NavigationList } from '../components/NavigationList';
+import { Text } from '../components/Text';
 
 export default function Home() {
   return (
@@ -13,14 +12,14 @@ export default function Home() {
         <FullscreenContent>
           <Kicker>New Product</Kicker>
           <BigTitle light>XX99 Mark II Headphones</BigTitle>
-          <Paragraph light>
+          <Text light>
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
-          </Paragraph>
+          </Text>
           <ProductButton variant="primary" />
         </FullscreenContent>
       </FullscreenSection>
-      <Section>
+      <Section className="page-navigation">
         <NavigationList showNav={true} />
       </Section>
       <PatternedSection>
@@ -37,10 +36,10 @@ export default function Home() {
         />
         <Content>
           <BigTitle light>ZX9 SPEAKER</BigTitle>
-          <Paragraph light>
+          <Text light>
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
-          </Paragraph>
+          </Text>
           <ProductButton />
         </Content>
       </PatternedSection>
@@ -67,30 +66,7 @@ export default function Home() {
           <ProductButton variant="secondary" />
         </ContentLeft>
       </EarphonesSection>
-      <MissionStatementSection>
-        <ProductImage
-          image="/images/shared/mobile/image-best-gear.jpg"
-          aspectRatio={1.09}
-          size="contain"
-          imageMd="/images/shared/tablet/image-best-gear.jpg"
-          aspectRatioMd={2.296}
-          imageLg="/images/shared/desktop/image-best-gear.jpg"
-          aspectRatioLg={0.918}
-        />
-        <Content>
-          <MissionStatementTitle dark>
-            Bringing you the <OrangeHighlight>best</OrangeHighlight> audio gear
-          </MissionStatementTitle>
-          <Paragraph dark>
-            Located at the heart of New York City, Audiophile is the premier
-            store for high end headphones, earphones, speakers, and audio
-            accessories. We have a large showroom and luxury demonstration rooms
-            available for you to browse and experience a wide range of our
-            products. Stop by our store to meet some of the fantastic people who
-            make Audiophile the best place to buy your portable audio equipment.
-          </Paragraph>
-        </Content>
-      </MissionStatementSection>
+      <MissionStatement />
     </Wrapper>
   );
 }
@@ -182,19 +158,6 @@ const EarphonesSection = styled(Section)`
   }
 `;
 
-const NavigationList = styled(NavigationMenuList)`
-  grid-template-columns: 1fr;
-  position: relative;
-  top: initial;
-  margin: 3rem 0;
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    padding: 0;
-    grid-gap: 20px;
-  }
-`;
-
 const ContentOverlay = styled.div`
   position: absolute;
   inset: 0;
@@ -265,33 +228,6 @@ const BigTitle = styled(Title)`
   }
 `;
 
-const MissionStatementTitle = styled(Title)`
-  @media (min-width: 1024px) {
-    font-size: 40px;
-    line-height: 44px;
-    letter-spacing: 1.42857px;
-    text-align: start;
-  }
-`;
-
-const OrangeHighlight = styled.span`
-  color: var(--orange-200);
-`;
-
-const Paragraph = styled.p`
-  font-size: 15px;
-  line-height: 25px;
-  text-align: center;
-  color: ${(props) => (props.light ? '#fff' : '#000')};
-  mix-blend-mode: normal;
-  opacity: 0.75;
-  max-width: 85%;
-
-  @media (min-width: 1024px) {
-    text-align: start;
-  }
-`;
-
 const ProductImage = styled.div`
   background: ${(props) => `url(${props.image}) no-repeat`};
   background-size: ${(props) => props.size};
@@ -343,12 +279,5 @@ const ContentLeft = styled(Content)`
 
   @media (min-width: 768px) {
     height: 100%;
-  }
-`;
-
-const MissionStatementSection = styled(Section)`
-  margin: 3rem 0;
-  @media (min-width: 1024px) {
-    flex-direction: row-reverse;
   }
 `;

@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-import { ShopLink } from '../../ShopLink';
-import { HeaderStyles } from '../../Header/Header';
 import { NavigationLink } from '../../NavigationLink';
+import { ShopLink } from '../../ShopLink';
 
 const ListItem = styled.li`
   grid-column: 2 / -2;
@@ -24,7 +23,7 @@ const ListItem = styled.li`
     grid-column: auto;
   }
 
-  ${HeaderStyles} & {
+  .header & {
     @media (min-width: 1024px) {
       grid-column: none;
       height: auto;
@@ -45,7 +44,7 @@ const ProductOverlay = styled.div`
   background-size: contain;
   z-index: 0;
 
-  ${HeaderStyles} & {
+  .header & {
     @media (min-width: 1024px) {
       display: none;
     }
@@ -63,7 +62,7 @@ const ProductBackground = styled.div`
   z-index: -1;
   border-radius: 10px;
 
-  ${HeaderStyles} & {
+  .header & {
     @media (min-width: 1024px) {
       display: none;
     }

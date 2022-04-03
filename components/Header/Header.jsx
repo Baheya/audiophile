@@ -31,7 +31,7 @@ export function Header() {
   }, []);
 
   return (
-    <HeaderStyles>
+    <HeaderStyles className="header">
       <NavigationMenu isBiggerThanTablet={isBiggerThanTablet} />
     </HeaderStyles>
   );

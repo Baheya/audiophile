@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import { HeaderStyles } from '../Header';
 import { NavigationItem } from './NavigationItem';
 
 import { constants } from '../../constants';
@@ -11,14 +10,6 @@ const NavigationMenuListStyles = styled.ul.attrs({
   list-style: none;
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: minmax(10px, 30px) minmax(200px, 1fr) minmax(
-      10px,
-      30px
-    );
-  position: absolute;
-  top: calc(100% - 0.25rem);
-  left: 0;
-  right: 0;
   width: 100%;
   background-color: var(--grey-100);
   padding: 20px 0;
@@ -29,15 +20,33 @@ const NavigationMenuListStyles = styled.ul.attrs({
   transition: 280ms all ease-out;
   visibility: ${(props) => (props.showNav ? 'visible' : 'hidden')};
   z-index: 2;
+  grid-template-columns: 1fr;
+  position: relative;
+  top: initial;
+  margin: 3rem 0;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    padding: 20px max(10px, 30px);
+    padding: 0;
     grid-gap: 20px;
-    transform: ${(props) => (props.showNav ? 'rotateX(0)' : 'rotateX(-90deg)')};
   }
 
-  ${HeaderStyles} & {
+  .header & {
+    grid-template-columns: minmax(10px, 30px) minmax(200px, 1fr) minmax(
+        10px,
+        30px
+      );
+    position: absolute;
+    top: calc(100% - 0.25rem);
+    left: 0;
+    right: 0;
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      padding: 20px max(10px, 30px);
+      grid-gap: 20px;
+      transform: ${(props) =>
+        props.showNav ? 'rotateX(0)' : 'rotateX(-90deg)'};
+    }
     @media (min-width: 1024px) {
       visibility: visible;
       display: flex;
