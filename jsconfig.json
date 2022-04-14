@@ -1,0 +1,14 @@
+{
+  "exclude": ["./node_modules"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["./components/*"],
+      "@public/*": ["./public/*"]
+      //   "@constants": ["./constants/index.js"],
+      //   "@helpers/*": ["./helpers/*"],
+      //   "@hooks/*": ["./hooks/*"],
+      //   "@utils": ["./utils/index.js"]
+    }
+  }
+}

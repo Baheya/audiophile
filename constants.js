@@ -7,18 +7,18 @@ export const constants = {
     {
       name: 'Headphones',
       image: '/images/shared/desktop/image-headphones.png',
-      path: '/headphones',
+      path: '/products/headphones',
     },
     {
       name: 'Speakers',
       image: '/images/shared/desktop/image-speakers.png',
-      path: '/speakers',
+      path: '/products/speakers',
     },
     ,
     {
       name: 'Earphones',
       image: '/images/shared/desktop/image-earphones.png',
-      path: '/earphones',
+      path: '/products/earphones',
     },
   ],
 };

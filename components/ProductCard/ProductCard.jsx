@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 import { ProductButton } from '../ProductButton';
 import { Text } from '../Text';
+import { ProductImage } from '../ProductImage/ProductImage';
 
 const Wrapper = styled.article`
   display: flex;
@@ -10,6 +11,7 @@ const Wrapper = styled.article`
   align-items: center;
   grid-column: 2 / 3;
   gap: 2rem;
+  position: relative;
 
   @media (min-width: 768px) {
     gap: 3rem;
@@ -18,29 +20,6 @@ const Wrapper = styled.article`
   @media (min-width: 1024px) {
     flex-direction: row;
   }
-`;
-
-const ImageWrapper = styled.div`
-  box-sizing: content-box;
-  display: ${(props) => (props.small ? 'block !important' : 'none !important')};
-
-  @media (min-width: 768px) {
-    display: ${(props) =>
-      props.medium ? 'block !important' : 'none !important'};
-  }
-
-  @media (min-width: 1024px) {
-    display: ${(props) =>
-      props.large ? 'block !important' : 'none !important'};
-  }
-
-  & > div {
-    border-radius: 8px;
-  }
-`;
-
-const StyledImage = styled(Image)`
-  border-radius: 8px;
 `;
 
 const ContentWrapper = styled.div`
@@ -93,24 +72,20 @@ export function ProductCard({
   kicker,
   title,
   description,
-  buttonVariant,
+  slug,
 }) {
   return (
-    <Wrapper>
-      <ImageWrapper small>
-        <StyledImage width="654" height="704" alt="" src={image} />
-      </ImageWrapper>
-      <ImageWrapper medium>
-        <StyledImage width="1378" height="704" alt="" src={imageMedium} />
-      </ImageWrapper>
-      <ImageWrapper large>
-        <StyledImage width="1080" height="1120" alt="" src={imageLarge} />
-      </ImageWrapper>
+    <Wrapper className="product-card">
+      <ProductImage
+        image={image}
+        imageMedium={imageMedium}
+        imageLarge={imageLarge}
+      />
       <ContentWrapper>
-        {kicker ? <Kicker>{kicker}</Kicker> : null}
+        {kicker ? <Kicker>New Product</Kicker> : null}
         <Title>{title}</Title>
         <Text>{description}</Text>
-        <ProductButton variant={buttonVariant} />
+        <ProductButton as="a" href={slug} variant="primary" />
       </ContentWrapper>
     </Wrapper>
   );

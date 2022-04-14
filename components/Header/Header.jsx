@@ -16,18 +16,18 @@ export function Header() {
   const [isBiggerThanTablet, setIsBiggerThanTablet] = useState(false);
 
   useEffect(() => {
-    function syncWindowSize() {
-      if (window.matchMedia('(min-width: 1024px)').matches) {
+    const mediaQuery = window.matchMedia('(min-width: 1024px)');
+
+    function syncWindowSize(e) {
+      if (e.matches) {
         setIsBiggerThanTablet(true);
       } else {
         setIsBiggerThanTablet(false);
       }
     }
 
-    syncWindowSize();
-    addEventListener('resize', syncWindowSize, false);
-
-    return () => removeEventListener('resize', syncWindowSize, false);
+    syncWindowSize(mediaQuery);
+    mediaQuery.addEventListener('change', syncWindowSize);
   }, []);
 
   return (

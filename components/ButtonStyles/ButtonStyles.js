@@ -8,5 +8,7 @@ export const ButtonStyles = styled.button`
   font-weight: 700;
   letter-spacing: 0.063rem;
   cursor: pointer;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

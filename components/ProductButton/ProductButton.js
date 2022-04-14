@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { ButtonStyles } from '../ButtonStyles';
 
 const ProductButtonStyles = styled(ButtonStyles)`
+  text-decoration: none;
   border: ${(props) =>
     props.variant === 'primary'
       ? '1px solid transparent'
@@ -30,9 +31,15 @@ const ProductButtonStyles = styled(ButtonStyles)`
   }
 `;
 
-export function ProductButton({ className, variant }) {
+export function ProductButton({ className, tag, href, variant, ...delegated }) {
   return (
-    <ProductButtonStyles className={className} variant={variant}>
+    <ProductButtonStyles
+      as={tag}
+      href={href}
+      className={className}
+      variant={variant}
+      {...delegated}
+    >
       See Product
     </ProductButtonStyles>
   );

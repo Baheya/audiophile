@@ -1,6 +1,14 @@
 import { createGlobalStyle } from 'styled-components';
+import { SSRProvider } from '@react-aria/ssr';
+
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { storyblokInit, apiPlugin } from '@storyblok/react';
+
+storyblokInit({
+  accessToken: process.env.NEXT_PUBLIC_SB_PREVIEW_TOKEN,
+  use: [apiPlugin],
+});
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -77,12 +85,12 @@ p, h1, h2, h3, h4, h5, h6 {
 
 function App({ Component, pageProps }) {
   return (
-    <>
+    <SSRProvider>
       <Header />
       <Component {...pageProps} />
       <GlobalStyle />
       <Footer />
-    </>
+    </SSRProvider>
   );
 }
 
