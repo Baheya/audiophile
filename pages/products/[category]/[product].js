@@ -6,6 +6,7 @@ import { MissionStatement } from '@components/MissionStatement';
 import { NavigationList } from '@components/NavigationList';
 import { TitleBar } from '@components/TitleBar';
 import { ProductDetailCard } from '@components/ProductDetailCard';
+import { RelatedProduct } from '@components/RelatedProduct';
 
 export default function Earphones({ stories: initialStories }) {
   const stories = useStoryblokState(initialStories);
@@ -32,9 +33,22 @@ export default function Earphones({ stories: initialStories }) {
           includedInBox={story.content.included_with_product}
         />
       ))}
+      <RelatedProducts>
+        {stories.map((story) =>
+          story.content.related_products.map((product) => (
+            <RelatedProduct
+              key={product.id}
+              name={product.content.name}
+              image={product.content.product_thumbnail_images}
+              slug={product.content.full_slug}
+            />
+          ))
+        )}
+      </RelatedProducts>
       <Section>
         <NavigationList showNav={true} />
       </Section>
+
       <MissionStatement />
     </Wrapper>
   );
@@ -58,10 +72,25 @@ export const Section = styled.section`
   overflow: hidden;
 `;
 
+const RelatedProducts = styled.aside`
+  display: flex;
+  flex-direction: column;
+  grid-column: 2 / 3;
+  gap: 3rem;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 1rem;
+  }
+`;
+
 export async function getStaticProps({ params }) {
   let sbParams = {
     version: 'draft', // or 'published'
     starts_with: `products/${params.category}/${params.product}`,
+    excluding_fields: 'product_images',
+    resolve_relations: 'Product.related_products',
   };
   const storyblokApi = getStoryblokApi();
   let { data } = await storyblokApi.get(`cdn/stories`, sbParams);
@@ -83,6 +112,7 @@ export async function getStaticPaths() {
   };
 
   let { data } = await storyblokApi.get('cdn/links', sbParams);
+
   let paths = [];
   Object.keys(data.links).forEach((linkKey) => {
     if (data.links[linkKey].parent_id === 0 || data.links[linkKey].is_folder) {

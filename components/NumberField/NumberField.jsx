@@ -25,6 +25,7 @@ const Button = styled.button`
   border: none;
   display: block;
   flex-basis: 40px;
+  cursor: pointer;
 `;
 
 const Input = styled.input`

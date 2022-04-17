@@ -117,6 +117,7 @@ const FeatureTitle = styled.h3`
   text-transform: uppercase;
 
   color: var(--black-200, #000);
+  white-space: nowrap;
 
   @media (min-width: 768px) {
     font-size: 32px;
@@ -175,6 +176,19 @@ const Quantity = styled.span`
   opacity: 1;
 `;
 
+const LayoutWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    gap: 0;
+    & > * {
+      margin-inline-end: 8rem;
+    }
+  }
+`;
+
 export function ProductDetailCard({
   image,
   imageMedium,
@@ -223,19 +237,21 @@ export function ProductDetailCard({
           </Form>
         </VerticalContentWrapper>
       </ContentWrapper>
-      <Features>
-        <FeatureTitle>Features</FeatureTitle>
-        <Text>{features}</Text>
-      </Features>
-      <IncludedWithProduct>
-        <FeatureTitle>In the Box</FeatureTitle>
-        {render(includedInBox, {
-          nodeResolvers: {
-            [NODE_UL]: (children) => <List>{children}</List>,
-            [NODE_LI]: (children) => <Item>{children}</Item>,
-          },
-        })}
-      </IncludedWithProduct>
+      <LayoutWrapper>
+        <Features>
+          <FeatureTitle>Features</FeatureTitle>
+          <Text>{features}</Text>
+        </Features>
+        <IncludedWithProduct>
+          <FeatureTitle>In the Box</FeatureTitle>
+          {render(includedInBox, {
+            nodeResolvers: {
+              [NODE_UL]: (children) => <List>{children}</List>,
+              [NODE_LI]: (children) => <Item>{children}</Item>,
+            },
+          })}
+        </IncludedWithProduct>
+      </LayoutWrapper>
       <Gallery images={galleryImages} />
     </Wrapper>
   );
