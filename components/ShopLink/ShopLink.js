@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { ButtonStyles } from '../ButtonStyles';
+import { BaseButton } from '@components/Button/Button';
 
 import { ChevronRight } from '../ChevronRight';
 
-const ShopLinkStyles = styled(ButtonStyles)`
+const ShopLinkStyles = styled(BaseButton)`
   background-color: transparent;
   color: var(--grey-500);
   display: flex;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { forwardRef } from 'react';
 
-const ButtonStyles = styled.button`
+export const BaseButton = styled.button`
   width: 160px;
   height: 48px;
   text-transform: uppercase;
@@ -13,7 +13,9 @@ const ButtonStyles = styled.button`
   justify-content: center;
   align-items: center;
   text-decoration: none;
+`;
 
+const ButtonStyles = styled(BaseButton)`
   border: ${(props) =>
     props.variant === 'primary'
       ? '1px solid transparent'
