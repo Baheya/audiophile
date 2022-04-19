@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { ProductButton } from '../ProductButton';
 import { Text } from '../Text';
 import { ProductImage } from '../ProductImage/ProductImage';
+import Link from 'next/link';
 
 const Wrapper = styled.article`
   display: flex;
@@ -85,7 +86,11 @@ export function ProductCard({
         {kicker ? <Kicker>New Product</Kicker> : null}
         <Title>{title}</Title>
         <Text>{description}</Text>
-        <ProductButton as="a" href={slug} variant="primary" >See Product</ProductButton>
+        <Link href={slug} passHref>
+          <ProductButton as="a" variant="primary">
+            See Product
+          </ProductButton>
+        </Link>
       </ContentWrapper>
     </Wrapper>
   );

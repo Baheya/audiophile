@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ButtonStyles } from '../ButtonStyles';
+import { forwardRef } from 'react';
 
 const ProductButtonStyles = styled(ButtonStyles)`
   text-decoration: none;
@@ -35,16 +36,11 @@ const ProductButtonStyles = styled(ButtonStyles)`
   }
 `;
 
-export function ProductButton({
-  className,
-  tag,
-  href,
-  variant,
-  children,
-  ...delegated
-}) {
-  return (
+// eslint-disable-next-line react/display-name
+const ProductButton = forwardRef(
+  ({ className, tag, href, variant, children, ...delegated }, ref) => (
     <ProductButtonStyles
+      ref={ref}
       as={tag}
       className={className}
       variant={variant}
@@ -52,5 +48,7 @@ export function ProductButton({
     >
       {children}
     </ProductButtonStyles>
-  );
-}
+  )
+);
+
+export { ProductButton };

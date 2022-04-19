@@ -43,7 +43,7 @@ export function Cart({ isOpen, onClose }) {
         <TotalLabel>Total</TotalLabel>
         <Price amount={total} />
       </Wrapper>
-      <Link href="/cart" passHref>
+      <Link href="/checkout" passHref>
         <ProductButton as="a" variant="primary">
           Checkout
         </ProductButton>

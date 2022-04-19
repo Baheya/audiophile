@@ -19,7 +19,7 @@ export const HeaderStyles = styled.header`
   width: 100%;
   display: flex;
 
-  background-color: transparent;
+  background-color: #000;
   width: 100%;
   height: 70px;
   /* position: relative; */

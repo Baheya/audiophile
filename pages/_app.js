@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { SSRProvider } from '@react-aria/ssr';
 import { OverlayProvider } from '@react-aria/overlays';
+import styled from 'styled-components';
 
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
@@ -84,14 +85,34 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 `;
 
+const PageLayout = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 70px 1fr auto;
+
+  & > header {
+    grid-row: 1 / 2;
+  }
+
+  & > main {
+    grid-row: 2 / 3;
+  }
+
+  & > footer {
+    grid-row: 3 / 4;
+  }
+`;
+
 function App({ Component, pageProps }) {
   return (
     <SSRProvider>
       <OverlayProvider>
-        <Header />
-        <Component {...pageProps} />
+        <PageLayout>
+          <Header />
+          <Component {...pageProps} />
+          <Footer />
+        </PageLayout>
         <GlobalStyle />
-        <Footer />
       </OverlayProvider>
     </SSRProvider>
   );

@@ -82,4 +82,9 @@ export const Overlay = styled.div`
       margin-top: 5%;
     }
   }
+
+  .confirmation & {
+    max-width: 540px;
+    margin: auto;
+  }
 `;

@@ -33,4 +33,8 @@ const PriceStyles = styled.p`
     mix-blend-mode: normal;
     opacity: 0.5;
   }
+
+  .card-footer & {
+    color: #fff;
+  }
 `;

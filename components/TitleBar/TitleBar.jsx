@@ -7,7 +7,7 @@ const Title = styled.h1`
   letter-spacing: 2px;
   text-transform: uppercase;
   padding: 30px;
-  padding-top: calc(90px + 30px);
+  /* padding-top: calc(90px + 30px); */
 
   color: #ffffff;
   background-color: #000;
