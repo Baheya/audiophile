@@ -5,6 +5,7 @@ import { Button } from '../components/Button';
 import { MissionStatement } from '../components/MissionStatement';
 import { NavigationList } from '../components/NavigationList';
 import { Text } from '../components/Text';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -17,7 +18,11 @@ export default function Home() {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </Text>
-          <Button variant="primary">See Product</Button>
+          <Link href="/products/headphones/xx99-mark-ii" passHref>
+            <Button variant="primary" as="a">
+              See Product
+            </Button>
+          </Link>
         </FullscreenContent>
       </FullscreenSection>
       <Section className="page-navigation">
@@ -41,13 +46,19 @@ export default function Home() {
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </Text>
-          <Button>See Product</Button>
+          <Link href="/products/speakers/zx9" passHref>
+            <Button as="a">See Product</Button>
+          </Link>
         </Content>
       </PatternedSection>
       <SpeakerSection>
         <ContentLeftOverlay>
           <Title dark>ZX7 SPEAKER</Title>
-          <Button variant="secondary">See Product</Button>
+          <Link href="/products/speakers/zx7" passHref>
+            <Button variant="secondary" as="a">
+              See Product
+            </Button>
+          </Link>
         </ContentLeftOverlay>
       </SpeakerSection>
       <EarphonesSection>
@@ -64,7 +75,11 @@ export default function Home() {
         />
         <ContentLeft backgroundColor="#f1f1f1">
           <Title dark>YX1 EARPHONES</Title>
-          <Button variant="secondary">See Product</Button>
+          <Link href="/products/earphones/yx1" passHref>
+            <Button variant="secondary" as="a">
+              See Product
+            </Button>
+          </Link>
         </ContentLeft>
       </EarphonesSection>
       <MissionStatement />

@@ -25,6 +25,7 @@ html {
     --grey-300: #F1F1F1;
     --grey-400: #CFCFCF;
     --grey-500: #818181;
+    --grey-600: #4C4C4C;
 
     --xs-and-up: 20em;
     --sm-and-up: 33.75em;

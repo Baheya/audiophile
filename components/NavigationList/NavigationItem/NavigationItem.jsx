@@ -90,6 +90,7 @@ export function NavigationItem({
               className="nav-link"
               aria-describedby="headphones"
               tag="a"
+              href={pagePath}
             />
             <ProductOverlay img={pageImage} />
             <ProductBackground />
@@ -98,7 +99,7 @@ export function NavigationItem({
       ) : (
         isBiggerThanTablet && (
           <ListItem>
-            <NavigationMenuLink href={pagePath}>{pageName}</NavigationMenuLink>
+            <NavigationMenuLink path={pagePath}>{pageName}</NavigationMenuLink>
           </ListItem>
         )
       )}

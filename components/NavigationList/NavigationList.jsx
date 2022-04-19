@@ -37,7 +37,10 @@ const NavigationMenuListStyles = styled.ul.attrs({
         30px
       );
     position: absolute;
-    top: calc(100% - 0.25rem);
+    margin: 0;
+    padding: 1rem 0;
+    top: 0;
+    transform: translate(0, 70px);
     left: 0;
     right: 0;
     @media (min-width: 768px) {
@@ -45,7 +48,7 @@ const NavigationMenuListStyles = styled.ul.attrs({
       padding: 20px max(10px, 30px);
       grid-gap: 20px;
       transform: ${(props) =>
-        props.showNav ? 'rotateX(0)' : 'rotateX(-90deg)'};
+        props.showNav ? 'rotateX(0) translate(0, 70px)' : 'rotateX(-90deg)'};
     }
     @media (min-width: 1024px) {
       visibility: visible;

@@ -39,7 +39,11 @@ const ButtonStyles = styled(BaseButton)`
         ? 'var(--orange-100)'
         : props.variant === 'secondary'
         ? 'var(--black-200)'
-        : 'var(--grey-100)'};
+        : 'var(--grey-600)'};
+    border: ${(props) =>
+      props.variant === 'secondary'
+        ? '1px solid var(--black-200)'
+        : '1px solid transparent'};
     color: var(--grey-100);
   }
 
