@@ -29,18 +29,28 @@ const ProductButtonStyles = styled(ButtonStyles)`
         : 'var(--grey-100)'};
     color: var(--grey-100);
   }
+
+  .cart & {
+    width: 100%;
+  }
 `;
 
-export function ProductButton({ className, tag, href, variant, ...delegated }) {
+export function ProductButton({
+  className,
+  tag,
+  href,
+  variant,
+  children,
+  ...delegated
+}) {
   return (
     <ProductButtonStyles
       as={tag}
-      href={href}
       className={className}
       variant={variant}
       {...delegated}
     >
-      See Product
+      {children}
     </ProductButtonStyles>
   );
 }

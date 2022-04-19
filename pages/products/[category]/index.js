@@ -76,7 +76,7 @@ export async function getStaticPaths() {
     version: 'draft',
     starts_with: 'products',
     excluding_fields:
-      'product_detail_images,product_thumbnail_images,features,price,image_gallery',
+      'product_detail_images,related_product_images,features,price,image_gallery',
   };
 
   let { data } = await storyblokApi.get('cdn/links', sbParams);

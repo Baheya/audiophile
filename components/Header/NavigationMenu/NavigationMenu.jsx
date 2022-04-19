@@ -1,36 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 
 import { MenuButtonIcon } from '../../MenuButtonIcon';
-import { CartButtonIcon } from '../../CartButton';
 import { Logo } from '../../Logo';
 import { keyboardHandler } from '../../../utils/keyboardHandler';
 import { NavigationList } from '../../NavigationList';
 
+import { useOverlayTriggerState } from '@react-stately/overlays';
+import { useButton } from '@react-aria/button';
+
 export const Nav = styled.nav`
-  background-color: transparent;
   width: 100%;
-  height: 70px;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem clamp(1.5rem, 8%, 18rem);
 
-  &:after {
-    content: '';
-    height: 0.5px;
-    width: 90%;
-    background-color: #979797;
-    margin: 0 auto;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: inline;
-    mix-blend-mode: lighten;
-  }
 `;
 
 const MenuButton = styled.button.attrs((props) => ({
@@ -73,6 +58,10 @@ const MenuButton = styled.button.attrs((props) => ({
 `;
 
 const StyledLink = styled.a`
+  background: none;
+  border: none;
+  cursor: pointer;
+
   &:focus {
     outline: 1px solid var(--orange-200);
     transition: outline-offset 0.25s ease;
@@ -81,6 +70,10 @@ const StyledLink = styled.a`
     outline: 1px solid var(--orange-200);
     outline-offset: 5px;
   }
+`;
+
+const StyledLogo = styled(Logo)`
+  position: absolute;
 `;
 
 export function NavigationMenu({ isBiggerThanTablet }) {
@@ -98,6 +91,20 @@ export function NavigationMenu({ isBiggerThanTablet }) {
     setShowNav(!showNav);
   };
 
+  let state = useOverlayTriggerState({});
+  let openButtonRef = useRef();
+  let closeButtonRef = useRef();
+
+  // useButton ensures that focus management is handled correctly,
+  // across all browsers. Focus is restored to the button once the
+  // dialog closes.
+  let { buttonProps: openButtonProps } = useButton(
+    {
+      onPress: () => state.open(),
+    },
+    openButtonRef
+  );
+
   return (
     <Nav>
       {isBiggerThanTablet ? (
@@ -111,11 +118,6 @@ export function NavigationMenu({ isBiggerThanTablet }) {
             showNav={showNav}
             isBiggerThanTablet={isBiggerThanTablet}
           />
-          <Link passHref href="/cart">
-            <StyledLink>
-              <CartButtonIcon />
-            </StyledLink>
-          </Link>
         </>
       ) : (
         <>
@@ -130,11 +132,6 @@ export function NavigationMenu({ isBiggerThanTablet }) {
           <Link passHref href="/">
             <StyledLink>
               <Logo />
-            </StyledLink>
-          </Link>
-          <Link passHref href="/cart">
-            <StyledLink>
-              <CartButtonIcon />
             </StyledLink>
           </Link>
         </>

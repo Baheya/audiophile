@@ -85,7 +85,7 @@ export function ProductCard({
         {kicker ? <Kicker>New Product</Kicker> : null}
         <Title>{title}</Title>
         <Text>{description}</Text>
-        <ProductButton as="a" href={slug} variant="primary" />
+        <ProductButton as="a" href={slug} variant="primary" >See Product</ProductButton>
       </ContentWrapper>
     </Wrapper>
   );

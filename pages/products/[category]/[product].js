@@ -31,6 +31,7 @@ export default function Earphones({ stories: initialStories }) {
           description={story.content.description}
           features={story.content.features}
           includedInBox={story.content.included_with_product}
+          thumbnail={story.content.product_thumbnail_image[0].filename}
         />
       ))}
       <RelatedProducts>
@@ -39,7 +40,7 @@ export default function Earphones({ stories: initialStories }) {
             <RelatedProduct
               key={product.id}
               name={product.content.name}
-              image={product.content.product_thumbnail_images}
+              image={product.content.related_product_images}
               slug={product.content.full_slug}
             />
           ))

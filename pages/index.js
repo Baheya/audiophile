@@ -17,7 +17,7 @@ export default function Home() {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </Text>
-          <ProductButton variant="primary" />
+          <ProductButton variant="primary">See Product</ProductButton>
         </FullscreenContent>
       </FullscreenSection>
       <Section className="page-navigation">
@@ -41,13 +41,13 @@ export default function Home() {
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </Text>
-          <ProductButton />
+          <ProductButton>See Product</ProductButton>
         </Content>
       </PatternedSection>
       <SpeakerSection>
         <ContentLeftOverlay>
           <Title dark>ZX7 SPEAKER</Title>
-          <ProductButton variant="secondary" />
+          <ProductButton variant="secondary">See Product</ProductButton>
         </ContentLeftOverlay>
       </SpeakerSection>
       <EarphonesSection>
@@ -64,7 +64,7 @@ export default function Home() {
         />
         <ContentLeft backgroundColor="#f1f1f1">
           <Title dark>YX1 EARPHONES</Title>
-          <ProductButton variant="secondary" />
+          <ProductButton variant="secondary">See Product</ProductButton>
         </ContentLeft>
       </EarphonesSection>
       <MissionStatement />

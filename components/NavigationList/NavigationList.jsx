@@ -50,15 +50,17 @@ const NavigationMenuListStyles = styled.ul.attrs({
     @media (min-width: 1024px) {
       visibility: visible;
       display: flex;
-      position: static;
       grid-template-columns: none;
       grid-gap: 0;
       padding: 0;
-      width: 100%;
       background: none;
       opacity: 1;
-      transform: initial;
       max-width: 400px;
+      top: 0;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
     }
   }
 `;

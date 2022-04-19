@@ -7,6 +7,10 @@ import { useButton } from '@react-aria/button';
 const Wrapper = styled.div`
   max-width: 120px;
   position: relative;
+
+  .cart-item & {
+    max-width: 96px;
+  }
 `;
 
 const Group = styled.div`
@@ -18,6 +22,10 @@ const Group = styled.div`
   width: 100%;
 
   justify-content: center;
+
+  .cart-item & {
+    height: 32px;
+  }
 `;
 
 const Button = styled.button`
@@ -71,11 +79,27 @@ export function NumberField(props) {
     <Wrapper>
       <VisuallyHiddenLabel {...labelProps}>{props.label}</VisuallyHiddenLabel>
       <Group {...groupProps}>
-        <Button {...decrementProps} ref={incrRef}>
+        <Button
+          {...decrementProps}
+          onClick={props.decreaseQuantity}
+          ref={incrRef}
+        >
           -
         </Button>
-        <Input {...inputProps} ref={inputRef} />
-        <Button {...incrementProps} ref={decRef}>
+        {props.compact ? (
+          <Input
+            {...inputProps}
+            ref={inputRef}
+            value={props.product.quantity}
+          />
+        ) : (
+          <Input {...inputProps} ref={inputRef} />
+        )}
+        <Button
+          {...incrementProps}
+          onClick={props.increaseQuantity}
+          ref={decRef}
+        >
           +
         </Button>
       </Group>

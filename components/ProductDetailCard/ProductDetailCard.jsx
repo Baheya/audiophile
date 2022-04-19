@@ -8,6 +8,10 @@ import { NumberField } from '../NumberField';
 
 import { render, NODE_UL, NODE_LI } from 'storyblok-rich-text-react-renderer';
 import { Gallery } from '@components/Gallery';
+import { ProductForm } from '@components/ProductForm';
+import { ClientOnly } from '@components/ClientOnly';
+import { Price } from '@components/Price';
+import { ControlledProductForm } from '@components/ControlledProductForm';
 
 const Wrapper = styled.article`
   display: flex;
@@ -83,18 +87,6 @@ const Title = styled.h2`
     line-height: 44px;
     letter-spacing: 1.42857px;
   }
-`;
-
-const Price = styled.p`
-  font-size: 18px;
-  line-height: 25px;
-  /* identical to box height */
-
-  letter-spacing: 1.28571px;
-  text-transform: uppercase;
-  font-weight: 700;
-
-  color: var(--black-200, #000);
 `;
 
 const Form = styled.form`
@@ -204,6 +196,7 @@ export function ProductDetailCard({
   includedInBox,
   productImages,
   galleryImages,
+  thumbnail,
   ...props
 }) {
   return (
@@ -218,23 +211,12 @@ export function ProductDetailCard({
           {kicker ? <Kicker>New Product</Kicker> : null}
           <Title>{title}</Title>
           <Text>{description}</Text>
-          <Price>
-            {new Intl.NumberFormat('en-US', {
-              style: 'currency',
-              currency: 'USD',
-              notation: 'compact',
-            }).format(price)}
-          </Price>
-          <Form>
-            <NumberField
-              label="Quantity"
-              defaultValue={1}
-              formatOptions={{
-                style: 'decimal',
-              }}
+          <Price amount={price} />
+          <ClientOnly>
+            <ControlledProductForm
+              product={{ name: title, price, thumbnail: thumbnail }}
             />
-            <ProductButton variant="primary" />
-          </Form>
+          </ClientOnly>
         </VerticalContentWrapper>
       </ContentWrapper>
       <LayoutWrapper>

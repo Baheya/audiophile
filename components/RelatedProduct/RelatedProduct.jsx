@@ -44,7 +44,9 @@ export function RelatedProduct({ image, name, slug }) {
         <StyledImage alt="" src={`${image[0].filename}/m/327x120/`} />
       </ImageWrapper>
       <Title>{name}</Title>
-      <ProductButton tag="a" variant="primary" href={slug} />
+      <ProductButton tag="a" variant="primary" href={slug}>
+        See Product
+      </ProductButton>
     </Wrapper>
   );
 }

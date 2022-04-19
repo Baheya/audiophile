@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { SSRProvider } from '@react-aria/ssr';
+import { OverlayProvider } from '@react-aria/overlays';
 
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
@@ -86,10 +87,12 @@ p, h1, h2, h3, h4, h5, h6 {
 function App({ Component, pageProps }) {
   return (
     <SSRProvider>
-      <Header />
-      <Component {...pageProps} />
-      <GlobalStyle />
-      <Footer />
+      <OverlayProvider>
+        <Header />
+        <Component {...pageProps} />
+        <GlobalStyle />
+        <Footer />
+      </OverlayProvider>
     </SSRProvider>
   );
 }
