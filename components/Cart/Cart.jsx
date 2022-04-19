@@ -1,6 +1,6 @@
 import { Modal } from '@components/Modal';
 import { Price } from '@components/Price';
-import { ProductButton } from '@components/ProductButton';
+import { Button } from '@components/Button';
 import { useStickyState } from 'hooks';
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -44,9 +44,9 @@ export function Cart({ isOpen, onClose }) {
         <Price amount={total} />
       </Wrapper>
       <Link href="/checkout" passHref>
-        <ProductButton as="a" variant="primary">
+        <Button as="a" variant="primary">
           Checkout
-        </ProductButton>
+        </Button>
       </Link>
     </Modal>
   );

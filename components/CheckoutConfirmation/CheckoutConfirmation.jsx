@@ -1,7 +1,7 @@
 import { CartItem } from '@components/Cart/CartItem/CartItem';
 import { Modal } from '@components/Modal';
 import { Price } from '@components/Price';
-import { ProductButton } from '@components/ProductButton';
+import { Button } from '@components/Button';
 import { useStickyState } from 'hooks';
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -128,6 +128,6 @@ const PriceLabel = styled.div`
   opacity: 0.5;
 `;
 
-const BackButton = styled(ProductButton)`
+const BackButton = styled(Button)`
   width: 100%;
 `;

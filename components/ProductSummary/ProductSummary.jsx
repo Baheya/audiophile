@@ -1,6 +1,6 @@
 import { CartItem } from '@components/Cart/CartItem/CartItem';
 import { Price } from '@components/Price';
-import { ProductButton } from '@components/ProductButton';
+import { Button } from '@components/Button';
 import { useStickyState } from 'hooks';
 import styled from 'styled-components';
 import { useOverlayTriggerState } from '@react-stately/overlays';
@@ -117,6 +117,6 @@ const Row = styled.div`
   justify-content: space-between;
 `;
 
-const ConfirmationButton = styled(ProductButton)`
+const ConfirmationButton = styled(Button)`
   width: 100%;
 `;

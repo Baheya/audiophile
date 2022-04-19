@@ -1,9 +1,19 @@
 import styled from 'styled-components';
-import { ButtonStyles } from '../ButtonStyles';
 import { forwardRef } from 'react';
 
-const ProductButtonStyles = styled(ButtonStyles)`
+const ButtonStyles = styled.button`
+  width: 160px;
+  height: 48px;
+  text-transform: uppercase;
+  font-size: 0.813rem;
+  font-weight: 700;
+  letter-spacing: 0.063rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
+
   border: ${(props) =>
     props.variant === 'primary'
       ? '1px solid transparent'
@@ -37,9 +47,9 @@ const ProductButtonStyles = styled(ButtonStyles)`
 `;
 
 // eslint-disable-next-line react/display-name
-const ProductButton = forwardRef(
+const Button = forwardRef(
   ({ className, tag, href, variant, children, ...delegated }, ref) => (
-    <ProductButtonStyles
+    <ButtonStyles
       ref={ref}
       as={tag}
       className={className}
@@ -47,8 +57,8 @@ const ProductButton = forwardRef(
       {...delegated}
     >
       {children}
-    </ProductButtonStyles>
+    </ButtonStyles>
   )
 );
 
-export { ProductButton };
+export { Button };

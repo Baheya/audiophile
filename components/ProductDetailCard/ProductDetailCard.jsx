@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import styled from 'styled-components';
 
-import { ProductButton } from '../ProductButton';
+import { Button } from '../Button';
 import { ProductImage } from '../ProductImage';
 import { Text } from '../Text';
 import { NumberField } from '../NumberField';

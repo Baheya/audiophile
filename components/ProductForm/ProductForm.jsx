@@ -1,5 +1,5 @@
 import { NumberField } from '@components/NumberField';
-import { ProductButton } from '@components/ProductButton';
+import { Button } from '@components/Button';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 
@@ -61,7 +61,7 @@ export function ProductForm({ product, compact, cart, setCart }) {
         product={productQuantity}
         minValue={1}
       />
-      {!compact && <ProductButton variant="primary">Add To Cart</ProductButton>}
+      {!compact && <Button variant="primary">Add To Cart</Button>}
     </Form>
   );
 }

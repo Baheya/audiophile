@@ -1,4 +1,4 @@
-import { ProductButton } from '@components/ProductButton';
+import { Button } from '@components/Button';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -44,9 +44,9 @@ export function RelatedProduct({ image, name, slug }) {
         <StyledImage alt="" src={`${image[0].filename}/m/327x120/`} />
       </ImageWrapper>
       <Title>{name}</Title>
-      <ProductButton tag="a" variant="primary" href={slug}>
+      <Button tag="a" variant="primary" href={slug}>
         See Product
-      </ProductButton>
+      </Button>
     </Wrapper>
   );
 }

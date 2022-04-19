@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { getStoryblokApi, useStoryblokState } from '@storyblok/react';
 
-import { ProductButton } from '../components/ProductButton';
+import { Button } from '../components/Button';
 import { MissionStatement } from '../components/MissionStatement';
 import { NavigationList } from '../components/NavigationList';
 import { Text } from '../components/Text';
@@ -17,7 +17,7 @@ export default function Home() {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </Text>
-          <ProductButton variant="primary">See Product</ProductButton>
+          <Button variant="primary">See Product</Button>
         </FullscreenContent>
       </FullscreenSection>
       <Section className="page-navigation">
@@ -41,13 +41,13 @@ export default function Home() {
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </Text>
-          <ProductButton>See Product</ProductButton>
+          <Button>See Product</Button>
         </Content>
       </PatternedSection>
       <SpeakerSection>
         <ContentLeftOverlay>
           <Title dark>ZX7 SPEAKER</Title>
-          <ProductButton variant="secondary">See Product</ProductButton>
+          <Button variant="secondary">See Product</Button>
         </ContentLeftOverlay>
       </SpeakerSection>
       <EarphonesSection>
@@ -64,7 +64,7 @@ export default function Home() {
         />
         <ContentLeft backgroundColor="#f1f1f1">
           <Title dark>YX1 EARPHONES</Title>
-          <ProductButton variant="secondary">See Product</ProductButton>
+          <Button variant="secondary">See Product</Button>
         </ContentLeft>
       </EarphonesSection>
       <MissionStatement />

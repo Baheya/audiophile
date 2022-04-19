@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 
-import { ProductButton } from '../ProductButton';
+import { Button } from '../Button';
 import { Text } from '../Text';
 import { ProductImage } from '../ProductImage/ProductImage';
 import Link from 'next/link';
@@ -87,9 +87,9 @@ export function ProductCard({
         <Title>{title}</Title>
         <Text>{description}</Text>
         <Link href={slug} passHref>
-          <ProductButton as="a" variant="primary">
+          <Button as="a" variant="primary">
             See Product
-          </ProductButton>
+          </Button>
         </Link>
       </ContentWrapper>
     </Wrapper>
