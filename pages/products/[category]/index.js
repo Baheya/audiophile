@@ -12,6 +12,8 @@ export default function Earphones({ stories: initialStories }) {
   const router = useRouter();
   const { category } = router.query;
 
+  console.log(stories);
+
   return (
     <Wrapper>
       <TitleBar title={category} />
@@ -95,6 +97,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }
