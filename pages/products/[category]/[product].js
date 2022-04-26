@@ -91,7 +91,7 @@ export async function getStaticProps({ params }) {
     version: 'draft', // or 'published'
     starts_with: `products/${params.category}/${params.product}`,
     excluding_fields: 'product_images',
-    resolve_relations: 'Product.related_products',
+    resolve_relations: 'product.related_products',
   };
   const storyblokApi = getStoryblokApi();
   let { data } = await storyblokApi.get(`cdn/stories`, sbParams);

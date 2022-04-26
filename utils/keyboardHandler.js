@@ -12,7 +12,6 @@ export function keyboardHandler(e) {
   const lastFocusableEl = dropdown?.[dropdown.length - 1];
   if (e.keyCode === 9) {
     //Rotate Focus
-    console.log(e.shiftKey);
     if (e.shiftKey && document?.activeElement === firstFocusableEl) {
       e.preventDefault();
       lastFocusableEl.focus();
