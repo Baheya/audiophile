@@ -11,8 +11,8 @@ export function NavigationLink({
 }) {
   return (
     <Link href={path} passHref {...delegated}>
-      <VisuallyHidden>{label}</VisuallyHidden>
-      <StyledLink className={`nav-link ${className ?? ''}`} href={path}>
+      <StyledLink className={`nav-link ${className ?? ''}`}>
+        <VisuallyHidden>{label}</VisuallyHidden>
         {children}
       </StyledLink>
     </Link>
