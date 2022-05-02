@@ -1,3 +1,1 @@
-import { NavigationLink } from './NavigationLink';
-
-export { NavigationLink };
+export { NavigationLink } from './NavigationLink';

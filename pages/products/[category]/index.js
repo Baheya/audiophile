@@ -1,13 +1,13 @@
-import styled from 'styled-components';
 import { getStoryblokApi, useStoryblokState } from '@storyblok/react';
 import { useRouter } from 'next/router';
+import styled from 'styled-components';
 
 import { MissionStatement } from '@components/MissionStatement';
 import { NavigationList } from '@components/NavigationList';
 import { ProductCard } from '@components/ProductCard/ProductCard';
 import { TitleBar } from '@components/TitleBar';
 
-export default function Earphones({ stories: initialStories }) {
+export default function Category({ data: initialStories }) {
   const stories = useStoryblokState(initialStories);
   const router = useRouter();
   const { category } = router.query;
@@ -15,7 +15,7 @@ export default function Earphones({ stories: initialStories }) {
   return (
     <Wrapper>
       <TitleBar title={category} />
-      {stories.map((story) => (
+      {stories.products.map((story) => (
         <ProductCard
           key={story.id}
           slug={`/${story.full_slug}`}
@@ -30,7 +30,7 @@ export default function Earphones({ stories: initialStories }) {
       <Section>
         <NavigationList showNav={true} />
       </Section>
-      <MissionStatement />
+      <MissionStatement blok={stories.components.content.body[0]} />
     </Wrapper>
   );
 }
@@ -58,12 +58,23 @@ export async function getStaticProps({ params }) {
     version: 'draft',
     starts_with: `products/${params.category}`,
   };
+
+  let sbStoryParams = {
+    version: 'draft',
+  };
+
   const storyblokApi = getStoryblokApi();
-  let { data } = await storyblokApi.get(`cdn/stories`, sbParams);
+  let { data: products } = await storyblokApi.get(`cdn/stories`, sbParams);
+  let { data: components } = await storyblokApi.get(
+    `cdn/stories/category`,
+    sbStoryParams
+  );
 
   return {
     props: {
-      stories: data ? data.stories : false,
+      data: products
+        ? { products: products.stories, components: components.story }
+        : false,
       // key: data ? data.story.id : false,
     },
     revalidate: 3600, // revalidate every hour

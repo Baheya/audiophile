@@ -1,17 +1,72 @@
 /* eslint-disable react/display-name */
+import { NODE_LI, NODE_UL, render } from 'storyblok-rich-text-react-renderer';
 import styled from 'styled-components';
 
-import { Button } from '../Button';
+import { ClientOnly } from '@components/ClientOnly';
+import { ControlledProductForm } from '@components/ControlledProductForm';
+import { Gallery } from '@components/Gallery';
+import { Kicker } from '@components/Kicker';
+import { Price } from '@components/Price';
 import { ProductImage } from '../ProductImage';
 import { Text } from '../Text';
-import { NumberField } from '../NumberField';
 
-import { render, NODE_UL, NODE_LI } from 'storyblok-rich-text-react-renderer';
-import { Gallery } from '@components/Gallery';
-import { ProductForm } from '@components/ProductForm';
-import { ClientOnly } from '@components/ClientOnly';
-import { Price } from '@components/Price';
-import { ControlledProductForm } from '@components/ControlledProductForm';
+export function ProductDetailCard({
+  image,
+  imageMedium,
+  imageLarge,
+  imageOne,
+  imageTwo,
+  imageThree,
+  kicker,
+  title,
+  description,
+  price,
+  features,
+  includedInBox,
+  productImages,
+  galleryImages,
+  thumbnail,
+  ...props
+}) {
+  return (
+    <Wrapper className="product-detail-card">
+      <ContentWrapper>
+        <ProductImage
+          image={productImages[0].filename}
+          imageMedium={productImages[1].filename}
+          imageLarge={productImages[2].filename}
+        />
+        <VerticalContentWrapper>
+          {kicker ? <Kicker>New Product</Kicker> : null}
+          <Title>{title}</Title>
+          <Text>{description}</Text>
+          <Price amount={price} />
+          <ClientOnly>
+            <ControlledProductForm
+              product={{ name: title, price, thumbnail: thumbnail }}
+            />
+          </ClientOnly>
+        </VerticalContentWrapper>
+      </ContentWrapper>
+      <LayoutWrapper>
+        <Features>
+          <FeatureTitle>Features</FeatureTitle>
+          <Text>{features}</Text>
+        </Features>
+        <IncludedWithProduct>
+          <FeatureTitle>In the Box</FeatureTitle>
+          {render(includedInBox, {
+            nodeResolvers: {
+              [NODE_UL]: (children) => <List>{children}</List>,
+              [NODE_LI]: (children) => <Item>{children}</Item>,
+            },
+          })}
+        </IncludedWithProduct>
+      </LayoutWrapper>
+      <Gallery images={galleryImages} />
+    </Wrapper>
+  );
+}
 
 const Wrapper = styled.article`
   display: flex;
@@ -65,15 +120,6 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const Kicker = styled.span`
-  font-size: 14px;
-  line-height: 19px;
-  letter-spacing: 10px;
-  text-transform: uppercase;
-
-  color: #d87d4a;
-`;
-
 const Title = styled.h2`
   font-size: 28px;
   line-height: 38px;
@@ -87,11 +133,6 @@ const Title = styled.h2`
     line-height: 44px;
     letter-spacing: 1.42857px;
   }
-`;
-
-const Form = styled.form`
-  display: flex;
-  gap: 1rem;
 `;
 
 const Features = styled.div`
@@ -161,13 +202,6 @@ const Item = styled.li`
   }
 `;
 
-const Quantity = styled.span`
-  font-size: 15px;
-  line-height: 25px;
-  color: var(--orange-200, #d87d4a);
-  opacity: 1;
-`;
-
 const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -180,61 +214,3 @@ const LayoutWrapper = styled.div`
     }
   }
 `;
-
-export function ProductDetailCard({
-  image,
-  imageMedium,
-  imageLarge,
-  imageOne,
-  imageTwo,
-  imageThree,
-  kicker,
-  title,
-  description,
-  price,
-  features,
-  includedInBox,
-  productImages,
-  galleryImages,
-  thumbnail,
-  ...props
-}) {
-  return (
-    <Wrapper className="product-detail-card">
-      <ContentWrapper>
-        <ProductImage
-          image={productImages[0].filename}
-          imageMedium={productImages[1].filename}
-          imageLarge={productImages[2].filename}
-        />
-        <VerticalContentWrapper>
-          {kicker ? <Kicker>New Product</Kicker> : null}
-          <Title>{title}</Title>
-          <Text>{description}</Text>
-          <Price amount={price} />
-          <ClientOnly>
-            <ControlledProductForm
-              product={{ name: title, price, thumbnail: thumbnail }}
-            />
-          </ClientOnly>
-        </VerticalContentWrapper>
-      </ContentWrapper>
-      <LayoutWrapper>
-        <Features>
-          <FeatureTitle>Features</FeatureTitle>
-          <Text>{features}</Text>
-        </Features>
-        <IncludedWithProduct>
-          <FeatureTitle>In the Box</FeatureTitle>
-          {render(includedInBox, {
-            nodeResolvers: {
-              [NODE_UL]: (children) => <List>{children}</List>,
-              [NODE_LI]: (children) => <Item>{children}</Item>,
-            },
-          })}
-        </IncludedWithProduct>
-      </LayoutWrapper>
-      <Gallery images={galleryImages} />
-    </Wrapper>
-  );
-}

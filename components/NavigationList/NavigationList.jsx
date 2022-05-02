@@ -4,6 +4,22 @@ import { NavigationItem } from './NavigationItem';
 
 import { constants } from '../../constants';
 
+export function NavigationList({ showNav, isBiggerThanTablet, className }) {
+  return (
+    <NavigationMenuListStyles className={className} showNav={showNav}>
+      {constants.navigation.map((page, i) => (
+        <NavigationItem
+          key={i}
+          pageName={page.name}
+          pageImage={page.image}
+          pagePath={page.path}
+          isBiggerThanTablet={isBiggerThanTablet}
+        />
+      ))}
+    </NavigationMenuListStyles>
+  );
+}
+
 const NavigationMenuListStyles = styled.ul.attrs({
   id: 'products-dropdown',
 })`
@@ -67,19 +83,3 @@ const NavigationMenuListStyles = styled.ul.attrs({
     }
   }
 `;
-
-export function NavigationList({ showNav, isBiggerThanTablet, className }) {
-  return (
-    <NavigationMenuListStyles className={className} showNav={showNav}>
-      {constants.navigation.map((page, i) => (
-        <NavigationItem
-          key={i}
-          pageName={page.name}
-          pageImage={page.image}
-          pagePath={page.path}
-          isBiggerThanTablet={isBiggerThanTablet}
-        />
-      ))}
-    </NavigationMenuListStyles>
-  );
-}

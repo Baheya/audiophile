@@ -1,7 +1,8 @@
-import { NumberField } from '@components/NumberField';
-import { Button } from '@components/Button';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
+
+import { Button } from '@components/Button';
+import { NumberField } from '@components/NumberField';
 
 const Form = styled.form`
   display: flex;

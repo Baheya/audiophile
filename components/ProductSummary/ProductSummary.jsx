@@ -1,13 +1,15 @@
-import { CartItem } from '@components/Cart/CartItem/CartItem';
-import { Price } from '@components/Price';
-import { Button } from '@components/Button';
-import { useStickyState } from 'hooks';
-import styled from 'styled-components';
-import { useOverlayTriggerState } from '@react-stately/overlays';
-import { OverlayContainer } from '@react-aria/overlays';
-import { useButton } from '@react-aria/button';
-import { CheckoutConfirmation } from '@components/CheckoutConfirmation';
 import { useRef } from 'react';
+import styled from 'styled-components';
+import { useButton } from '@react-aria/button';
+import { OverlayContainer } from '@react-aria/overlays';
+import { useOverlayTriggerState } from '@react-stately/overlays';
+
+import { Button } from '@components/Button';
+import { CartItem } from '@components/Cart/CartItem/CartItem';
+import { CheckoutConfirmation } from '@components/CheckoutConfirmation';
+import { Price } from '@components/Price';
+
+import { useStickyState } from 'hooks';
 
 export function ProductSummary() {
   const [cart, setCart] = useStickyState([], 'cart');
@@ -92,8 +94,6 @@ const Card = styled.div`
 const SummaryTitle = styled.h2`
   font-size: 18px;
   line-height: 25px;
-  /* identical to box height */
-
   letter-spacing: 1.28571px;
   text-transform: uppercase;
 
@@ -104,8 +104,6 @@ const SummaryLabel = styled.p`
   font-size: 15px;
   line-height: 25px;
   text-transform: uppercase;
-  /* identical to box height, or 167% */
-
   color: #000000;
 
   mix-blend-mode: normal;

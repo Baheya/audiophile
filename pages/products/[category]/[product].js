@@ -8,7 +8,7 @@ import { TitleBar } from '@components/TitleBar';
 import { ProductDetailCard } from '@components/ProductDetailCard';
 import { RelatedProduct } from '@components/RelatedProduct';
 
-export default function Earphones({ stories: initialStories }) {
+export default function Product({ data: initialStories }) {
   const stories = useStoryblokState(initialStories);
   const router = useRouter();
   const { category } = router.query;
@@ -16,7 +16,7 @@ export default function Earphones({ stories: initialStories }) {
   return (
     <Wrapper>
       <TitleBar title={category} />
-      {stories.map((story) => (
+      {stories.products.map((story) => (
         <ProductDetailCard
           key={story.id}
           slug={`/${story.full_slug}`}
@@ -35,13 +35,13 @@ export default function Earphones({ stories: initialStories }) {
         />
       ))}
       <RelatedProducts>
-        {stories.map((story) =>
+        {stories.products.map((story) =>
           story.content.related_products.map((product) => (
             <RelatedProduct
               key={product.id}
               name={product.content.name}
               image={product.content.related_product_images}
-              slug={product.content.full_slug}
+              slug={product.full_slug}
             />
           ))
         )}
@@ -50,7 +50,7 @@ export default function Earphones({ stories: initialStories }) {
         <NavigationList showNav={true} />
       </Section>
 
-      <MissionStatement />
+      <MissionStatement blok={stories.components.content.body[0]} />
     </Wrapper>
   );
 }
@@ -93,12 +93,23 @@ export async function getStaticProps({ params }) {
     excluding_fields: 'product_images',
     resolve_relations: 'product.related_products',
   };
+
+  let sbStoryParams = {
+    version: 'draft',
+  };
+
   const storyblokApi = getStoryblokApi();
-  let { data } = await storyblokApi.get(`cdn/stories`, sbParams);
+  let { data: products } = await storyblokApi.get(`cdn/stories`, sbParams);
+  let { data: components } = await storyblokApi.get(
+    `cdn/stories/product`,
+    sbStoryParams
+  );
 
   return {
     props: {
-      stories: data ? data.stories : false,
+      data: products
+        ? { products: products.stories, components: components.story }
+        : false,
       //   key: data ? data.story.id : false,
     },
     revalidate: 3600, // revalidate every hour

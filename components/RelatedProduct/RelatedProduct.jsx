@@ -1,5 +1,28 @@
-import { Button } from '@components/Button';
 import styled from 'styled-components';
+
+import { Button } from '@components/Button';
+
+export function RelatedProduct({ image, name, slug }) {
+  return (
+    <Wrapper>
+      <ImageWrapper>
+        <source
+          media="(min-width: 1024px)"
+          srcSet={`${image[2].filename}/m/350x318/`}
+        />
+        <source
+          media="(min-width: 768px)"
+          srcSet={`${image[1].filename}/m/223x318/`}
+        />
+        <StyledImage alt="" src={`${image[0].filename}/m/327x120/`} />
+      </ImageWrapper>
+      <Title>{name}</Title>
+      <Button tag="a" variant="primary" href={slug}>
+        See Product
+      </Button>
+    </Wrapper>
+  );
+}
 
 const Wrapper = styled.div`
   display: flex;
@@ -28,25 +51,3 @@ const Title = styled.h2`
 
   color: #000000;
 `;
-
-export function RelatedProduct({ image, name, slug }) {
-  return (
-    <Wrapper>
-      <ImageWrapper>
-        <source
-          media="(min-width: 1024px)"
-          srcSet={`${image[2].filename}/m/350x318/`}
-        />
-        <source
-          media="(min-width: 768px)"
-          srcSet={`${image[1].filename}/m/223x318/`}
-        />
-        <StyledImage alt="" src={`${image[0].filename}/m/327x120/`} />
-      </ImageWrapper>
-      <Title>{name}</Title>
-      <Button tag="a" variant="primary" href={slug}>
-        See Product
-      </Button>
-    </Wrapper>
-  );
-}

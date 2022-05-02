@@ -1,3 +1,1 @@
-import { CheckoutConfirmation } from './CheckoutConfirmation';
-
-export { CheckoutConfirmation };
+export { CheckoutConfirmation } from './CheckoutConfirmation';

@@ -1,3 +1,1 @@
-import { NumberField } from './NumberField';
-
-export { NumberField };
+export { NumberField } from './NumberField';

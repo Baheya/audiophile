@@ -1,6 +1,26 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 
+export function ProductImage({ image, imageMedium, imageLarge }) {
+  return (
+    <>
+      <ImageWrapper small>
+        <StyledImage layout="fill" alt="" src={image} />
+      </ImageWrapper>
+      <ImageWrapper medium>
+        <StyledImage layout="fill" alt="" src={imageMedium ?? image} />
+      </ImageWrapper>
+      <ImageWrapper large>
+        <StyledImage
+          layout="fill"
+          alt=""
+          src={imageLarge ?? imageMedium ?? image}
+        />
+      </ImageWrapper>
+    </>
+  );
+}
+
 const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
@@ -36,23 +56,3 @@ const ImageWrapper = styled.div`
 const StyledImage = styled(Image)`
   border-radius: 8px;
 `;
-
-export function ProductImage({ image, imageMedium, imageLarge }) {
-  return (
-    <>
-      <ImageWrapper small>
-        <StyledImage layout="fill" alt="" src={image} />
-      </ImageWrapper>
-      <ImageWrapper medium>
-        <StyledImage layout="fill" alt="" src={imageMedium ?? image} />
-      </ImageWrapper>
-      <ImageWrapper large>
-        <StyledImage
-          layout="fill"
-          alt=""
-          src={imageLarge ?? imageMedium ?? image}
-        />
-      </ImageWrapper>
-    </>
-  );
-}

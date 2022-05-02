@@ -1,31 +1,18 @@
-import { useOverlayTriggerState } from '@react-stately/overlays';
-import {
-  useOverlay,
-  usePreventScroll,
-  useModal,
-  OverlayProvider,
-  OverlayContainer,
-} from '@react-aria/overlays';
+import styled from 'styled-components';
+import { useRef } from 'react';
+import { useOverlay, usePreventScroll, useModal } from '@react-aria/overlays';
 import { useDialog } from '@react-aria/dialog';
 import { FocusScope } from '@react-aria/focus';
-import { useButton } from '@react-aria/button';
-import { useRef } from 'react';
-import styled from 'styled-components';
 
 export function Modal(props) {
   let { title, action, children } = props;
 
-  // Handle interacting outside the dialog and pressing
-  // the Escape key to close the modal.
   let ref = useRef();
   let { overlayProps, underlayProps } = useOverlay(props, ref);
 
-  // Prevent scrolling while the modal is open, and hide content
-  // outside the modal from screen readers.
   usePreventScroll();
   let { modalProps } = useModal();
 
-  // Get props for the dialog and its title
   let { dialogProps, titleProps } = useDialog(props, ref);
 
   return (

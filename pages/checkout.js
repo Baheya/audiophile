@@ -1,36 +1,7 @@
-import { CartItem } from '@components/Cart/CartItem/CartItem';
-import { ClientOnly } from '@components/ClientOnly';
-import { ProductSummary } from '@components/ProductSummary';
 import styled from 'styled-components';
 
-// const form = [
-//   {
-//     section: 'Billing Details',
-//     fields: [
-//       { label: 'Name', placeholder: 'Alexei Ward' },
-//       { label: 'Email Address', placeholder: 'alexei@mail.com' },
-//       { label: 'Phone Number', placeholder: '+1 202-555-0136' },
-//     ],
-//   },
-//   {
-//     section: 'Shipping Info',
-//     fields: [
-//       { label: 'Your Address', placeholder: '1137 Williams Avenue' },
-//       { label: 'ZIP Code', placeholder: '10001' },
-//       { label: 'City', placeholder: 'New York' },
-//       { label: 'Country', placeholder: 'United States' },
-//     ],
-//   },
-//   {
-//     section: 'Payment Details',
-//     fields: [
-//       { label: 'Payment Method', value: ['e-Money', 'Cash on Delivery'] },
-//       { label: 'ZIP Code', placeholder: '10001' },
-//       { label: 'City', placeholder: 'New York' },
-//       { label: 'Country', placeholder: 'United States' },
-//     ],
-//   },
-// ];
+import { ClientOnly } from '@components/ClientOnly';
+import { ProductSummary } from '@components/ProductSummary';
 
 export default function Checkout() {
   return (
@@ -111,7 +82,6 @@ const PageWrapper = styled.main`
   grid-template-columns: clamp(1.5rem, 8%, 18rem) 1fr clamp(1.5rem, 8%, 18rem);
   gap: 25px 0;
   background-color: #f2f2f2;
-  /* margin-top: 80px; */
 
   & > * {
     grid-column: 2 / 3;
@@ -182,19 +152,11 @@ const SectionTitle = styled.h3`
   font-weight: 700;
   font-size: 13px;
   line-height: 25px;
-  /* identical to box height, or 192% */
-
   letter-spacing: 0.928571px;
   text-transform: uppercase;
 
   color: var(--orange-200, #d87d4a);
   grid-column: 1 / -1;
-`;
-
-const CheckoutWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
 `;
 
 const Section = styled.section`
@@ -223,17 +185,6 @@ const RadioInputWrapper = styled.div`
   height: 56px;
   padding: 0 1.5rem;
   accent-color: var(--orange-200, #d87d4a);
-`;
-
-const SummaryTitle = styled.h2`
-  font-size: 18px;
-  line-height: 25px;
-  /* identical to box height */
-
-  letter-spacing: 1.28571px;
-  text-transform: uppercase;
-
-  color: #000000;
 `;
 
 const Field = styled.div``;

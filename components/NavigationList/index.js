@@ -1,3 +1,1 @@
-import { NavigationList } from './NavigationList';
-
-export { NavigationList };
+export { NavigationList } from './NavigationList';

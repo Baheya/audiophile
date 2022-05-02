@@ -3,6 +3,17 @@ import { BaseButton } from '@components/Button/Button';
 
 import { ChevronRight } from '../ChevronRight';
 
+export function ShopLink({ tag, ...delegated }) {
+  return (
+    <ShopLinkStyles as={tag} {...delegated}>
+      Shop
+      <span>
+        <ChevronRight />
+      </span>
+    </ShopLinkStyles>
+  );
+}
+
 const ShopLinkStyles = styled(BaseButton)`
   background-color: transparent;
   color: var(--grey-500);
@@ -42,14 +53,3 @@ const ShopLinkStyles = styled(BaseButton)`
     outline-offset: -5px;
   }
 `;
-
-export function ShopLink({ tag, ...delegated }) {
-  return (
-    <ShopLinkStyles as={tag} {...delegated}>
-      Shop
-      <span>
-        <ChevronRight />
-      </span>
-    </ShopLinkStyles>
-  );
-}

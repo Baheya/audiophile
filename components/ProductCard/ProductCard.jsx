@@ -1,10 +1,37 @@
 import styled from 'styled-components';
-import Image from 'next/image';
 
 import { Button } from '../Button';
-import { Text } from '../Text';
+import { Kicker } from '@components/Kicker';
 import { ProductImage } from '../ProductImage/ProductImage';
-import Link from 'next/link';
+import { Text } from '../Text';
+
+export function ProductCard({
+  image,
+  imageMedium,
+  imageLarge,
+  kicker,
+  title,
+  description,
+  slug,
+}) {
+  return (
+    <Wrapper className="product-card">
+      <ProductImage
+        image={image}
+        imageMedium={imageMedium}
+        imageLarge={imageLarge}
+      />
+      <ContentWrapper>
+        {kicker ? <Kicker>New Product</Kicker> : null}
+        <Title>{title}</Title>
+        <Text>{description}</Text>
+        <Button as="a" href={slug} variant="primary">
+          See Product
+        </Button>
+      </ContentWrapper>
+    </Wrapper>
+  );
+}
 
 const Wrapper = styled.article`
   display: flex;
@@ -42,15 +69,6 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const Kicker = styled.span`
-  font-size: 14px;
-  line-height: 19px;
-  letter-spacing: 10px;
-  text-transform: uppercase;
-
-  color: #d87d4a;
-`;
-
 const Title = styled.h2`
   font-size: 28px;
   line-height: 38px;
@@ -65,33 +83,3 @@ const Title = styled.h2`
     letter-spacing: 1.42857px;
   }
 `;
-
-export function ProductCard({
-  image,
-  imageMedium,
-  imageLarge,
-  kicker,
-  title,
-  description,
-  slug,
-}) {
-  return (
-    <Wrapper className="product-card">
-      <ProductImage
-        image={image}
-        imageMedium={imageMedium}
-        imageLarge={imageLarge}
-      />
-      <ContentWrapper>
-        {kicker ? <Kicker>New Product</Kicker> : null}
-        <Title>{title}</Title>
-        <Text>{description}</Text>
-        <Link href={slug} passHref>
-          <Button as="a" variant="primary">
-            See Product
-          </Button>
-        </Link>
-      </ContentWrapper>
-    </Wrapper>
-  );
-}

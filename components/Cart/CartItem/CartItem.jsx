@@ -1,8 +1,8 @@
-import { NumberField } from '@components/NumberField';
+import styled from 'styled-components';
+import Image from 'next/image';
+
 import { Price } from '@components/Price';
 import { ProductForm } from '@components/ProductForm';
-import Image from 'next/image';
-import styled from 'styled-components';
 
 export function CartItem({
   image,
@@ -46,8 +46,6 @@ const Wrapper = styled.li`
 const Name = styled.h3`
   font-size: 15px;
   line-height: 25px;
-  /* identical to box height, or 167% */
-
   color: #000000;
 `;
 
@@ -59,8 +57,6 @@ const Stack = styled.div`
 const Quantity = styled.p`
   font-size: 15px;
   line-height: 25px;
-  /* identical to box height, or 167% */
-
   text-align: right;
 
   color: #000000;

@@ -1,5 +1,37 @@
-import styled from 'styled-components';
 import { forwardRef } from 'react';
+import styled from 'styled-components';
+import Link from 'next/link';
+
+// eslint-disable-next-line react/display-name
+const Button = forwardRef(
+  ({ className, tag, href, variant, children, ...delegated }, ref) =>
+    tag === 'a' ? (
+      <Link href={href} passHref>
+        <ButtonStyles
+          href={href}
+          ref={ref}
+          as="a"
+          className={className}
+          variant={variant}
+          {...delegated}
+        >
+          {children}
+        </ButtonStyles>
+      </Link>
+    ) : (
+      <ButtonStyles
+        ref={ref}
+        as={tag}
+        className={className}
+        variant={variant}
+        {...delegated}
+      >
+        {children}
+      </ButtonStyles>
+    )
+);
+
+export { Button };
 
 export const BaseButton = styled.button`
   width: 160px;
@@ -51,20 +83,3 @@ const ButtonStyles = styled(BaseButton)`
     width: 100%;
   }
 `;
-
-// eslint-disable-next-line react/display-name
-const Button = forwardRef(
-  ({ className, tag, href, variant, children, ...delegated }, ref) => (
-    <ButtonStyles
-      ref={ref}
-      as={tag}
-      className={className}
-      variant={variant}
-      {...delegated}
-    >
-      {children}
-    </ButtonStyles>
-  )
-);
-
-export { Button };

@@ -1,8 +1,59 @@
+import styled from 'styled-components';
+import { useButton } from '@react-aria/button';
 import { useNumberField } from '@react-aria/numberfield';
 import { useNumberFieldState } from '@react-stately/numberfield';
 import { useRef } from 'react';
-import styled from 'styled-components';
-import { useButton } from '@react-aria/button';
+
+export function NumberField(props) {
+  let state = useNumberFieldState({ ...props, locale: 'en-US' });
+  let inputRef = useRef();
+  let incrRef = useRef();
+  let decRef = useRef();
+  let {
+    labelProps,
+    groupProps,
+    inputProps,
+    incrementButtonProps,
+    decrementButtonProps,
+  } = useNumberField(props, state, inputRef);
+
+  let { buttonProps: incrementProps } = useButton(
+    incrementButtonProps,
+    incrRef
+  );
+  let { buttonProps: decrementProps } = useButton(decrementButtonProps, decRef);
+
+  return (
+    <Wrapper>
+      <VisuallyHiddenLabel {...labelProps}>{props.label}</VisuallyHiddenLabel>
+      <Group {...groupProps}>
+        <Button
+          {...decrementProps}
+          onClick={props.decreaseQuantity}
+          ref={incrRef}
+        >
+          -
+        </Button>
+        {props.compact ? (
+          <Input
+            {...inputProps}
+            ref={inputRef}
+            value={props.product.quantity}
+          />
+        ) : (
+          <Input {...inputProps} ref={inputRef} />
+        )}
+        <Button
+          {...incrementProps}
+          onClick={props.increaseQuantity}
+          ref={decRef}
+        >
+          +
+        </Button>
+      </Group>
+    </Wrapper>
+  );
+}
 
 const Wrapper = styled.div`
   max-width: 120px;
@@ -55,54 +106,3 @@ const VisuallyHiddenLabel = styled.label`
   overflow: hidden;
   margin: -1px;
 `;
-
-export function NumberField(props) {
-  let state = useNumberFieldState({ ...props, locale: 'en-US' });
-  let inputRef = useRef();
-  let incrRef = useRef();
-  let decRef = useRef();
-  let {
-    labelProps,
-    groupProps,
-    inputProps,
-    incrementButtonProps,
-    decrementButtonProps,
-  } = useNumberField(props, state, inputRef);
-
-  let { buttonProps: incrementProps } = useButton(
-    incrementButtonProps,
-    incrRef
-  );
-  let { buttonProps: decrementProps } = useButton(decrementButtonProps, decRef);
-
-  return (
-    <Wrapper>
-      <VisuallyHiddenLabel {...labelProps}>{props.label}</VisuallyHiddenLabel>
-      <Group {...groupProps}>
-        <Button
-          {...decrementProps}
-          onClick={props.decreaseQuantity}
-          ref={incrRef}
-        >
-          -
-        </Button>
-        {props.compact ? (
-          <Input
-            {...inputProps}
-            ref={inputRef}
-            value={props.product.quantity}
-          />
-        ) : (
-          <Input {...inputProps} ref={inputRef} />
-        )}
-        <Button
-          {...incrementProps}
-          onClick={props.increaseQuantity}
-          ref={decRef}
-        >
-          +
-        </Button>
-      </Group>
-    </Wrapper>
-  );
-}

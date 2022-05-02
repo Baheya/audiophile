@@ -1,10 +1,9 @@
+import styled from 'styled-components';
+
 import { CartItem } from '@components/Cart/CartItem/CartItem';
 import { Modal } from '@components/Modal';
 import { Price } from '@components/Price';
 import { Button } from '@components/Button';
-import { useStickyState } from 'hooks';
-import Link from 'next/link';
-import styled from 'styled-components';
 
 export function CheckoutConfirmation({
   onClose,
@@ -47,8 +46,6 @@ export function CheckoutConfirmation({
 const Title = styled.h2`
   font-size: 32px;
   line-height: 36px;
-  /* or 112% */
-
   letter-spacing: 1.14286px;
   text-transform: uppercase;
 
@@ -120,8 +117,6 @@ const PriceLabel = styled.div`
   font-size: 15px;
   line-height: 25px;
   text-transform: uppercase;
-  /* identical to box height, or 167% */
-
   color: #ffffff;
 
   mix-blend-mode: normal;

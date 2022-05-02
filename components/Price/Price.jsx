@@ -15,8 +15,6 @@ export function Price({ amount }) {
 const PriceStyles = styled.p`
   font-size: 18px;
   line-height: 25px;
-  /* identical to box height */
-
   letter-spacing: 1.28571px;
   text-transform: uppercase;
   font-weight: 700;
@@ -26,8 +24,6 @@ const PriceStyles = styled.p`
   .cart-item & {
     font-size: 14px;
     line-height: 25px;
-    /* identical to box height, or 179% */
-
     color: #000000;
 
     mix-blend-mode: normal;

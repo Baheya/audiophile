@@ -1,3 +1,1 @@
-import { TitleBar } from './TitleBar';
-
-export { TitleBar };
+export { TitleBar } from './TitleBar';

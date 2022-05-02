@@ -3,6 +3,40 @@ import styled from 'styled-components';
 import { NavigationLink } from '../../NavigationLink';
 import { ShopLink } from '../../ShopLink';
 
+export function NavigationItem({
+  pageImage,
+  pageName,
+  isBiggerThanTablet,
+  pagePath = '/',
+}) {
+  return (
+    <>
+      {!isBiggerThanTablet && pageImage ? (
+        <ListItem>
+          <>
+            {pageName}
+            <ShopLink
+              tabIndex="0"
+              className="nav-link"
+              aria-describedby="headphones"
+              tag="a"
+              href={pagePath}
+            />
+            <ProductOverlay img={pageImage} />
+            <ProductBackground />
+          </>
+        </ListItem>
+      ) : (
+        isBiggerThanTablet && (
+          <ListItem>
+            <NavigationMenuLink path={pagePath}>{pageName}</NavigationMenuLink>
+          </ListItem>
+        )
+      )}
+    </>
+  );
+}
+
 const ListItem = styled.li`
   grid-column: 2 / -2;
   width: 100%;
@@ -72,37 +106,3 @@ const ProductBackground = styled.div`
 const NavigationMenuLink = styled(NavigationLink)`
   font-size: 12px;
 `;
-
-export function NavigationItem({
-  pageImage,
-  pageName,
-  isBiggerThanTablet,
-  pagePath = '/',
-}) {
-  return (
-    <>
-      {!isBiggerThanTablet && pageImage ? (
-        <ListItem>
-          <>
-            {pageName}
-            <ShopLink
-              tabIndex="0"
-              className="nav-link"
-              aria-describedby="headphones"
-              tag="a"
-              href={pagePath}
-            />
-            <ProductOverlay img={pageImage} />
-            <ProductBackground />
-          </>
-        </ListItem>
-      ) : (
-        isBiggerThanTablet && (
-          <ListItem>
-            <NavigationMenuLink path={pagePath}>{pageName}</NavigationMenuLink>
-          </ListItem>
-        )
-      )}
-    </>
-  );
-}

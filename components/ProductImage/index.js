@@ -1,3 +1,1 @@
-import { ProductImage } from './ProductImage';
-
-export { ProductImage };
+export { ProductImage } from './ProductImage';
