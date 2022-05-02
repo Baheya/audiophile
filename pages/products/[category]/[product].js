@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { getStoryblokApi, useStoryblokState } from '@storyblok/react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import { MissionStatement } from '@components/MissionStatement';
@@ -14,44 +15,49 @@ export default function Product({ data: initialStories }) {
   const { category } = router.query;
 
   return (
-    <Wrapper>
-      <TitleBar title={category} />
-      {stories.products.map((story) => (
-        <ProductDetailCard
-          key={story.id}
-          slug={`/${story.full_slug}`}
-          image={story.content.product_detail_images[0].filename}
-          imageMedium={story.content.product_detail_images[1].filename}
-          imageLarge={story.content.product_detail_images[2].filename}
-          productImages={story.content.product_detail_images}
-          galleryImages={story.content.image_gallery}
-          kicker={story.content.new}
-          price={story.content.price}
-          title={`${story.name} ${category}`}
-          description={story.content.description}
-          features={story.content.features}
-          includedInBox={story.content.included_with_product}
-          thumbnail={story.content.product_thumbnail_image[0].filename}
-        />
-      ))}
-      <RelatedProducts>
-        {stories.products.map((story) =>
-          story.content.related_products.map((product) => (
-            <RelatedProduct
-              key={product.id}
-              name={product.content.name}
-              image={product.content.related_product_images}
-              slug={product.full_slug}
-            />
-          ))
-        )}
-      </RelatedProducts>
-      <Section>
-        <NavigationList showNav={true} />
-      </Section>
+    <>
+      <Head>
+        <title>{stories.products[0].name}</title>
+      </Head>
+      <Wrapper>
+        <TitleBar title={category} />
+        {stories.products.map((story) => (
+          <ProductDetailCard
+            key={story.id}
+            slug={`/${story.full_slug}`}
+            image={story.content.product_detail_images[0].filename}
+            imageMedium={story.content.product_detail_images[1].filename}
+            imageLarge={story.content.product_detail_images[2].filename}
+            productImages={story.content.product_detail_images}
+            galleryImages={story.content.image_gallery}
+            kicker={story.content.new}
+            price={story.content.price}
+            title={`${story.name} ${category}`}
+            description={story.content.description}
+            features={story.content.features}
+            includedInBox={story.content.included_with_product}
+            thumbnail={story.content.product_thumbnail_image[0].filename}
+          />
+        ))}
+        <RelatedProducts>
+          {stories.products.map((story) =>
+            story.content.related_products.map((product) => (
+              <RelatedProduct
+                key={product.id}
+                name={product.content.name}
+                image={product.content.related_product_images}
+                slug={product.full_slug}
+              />
+            ))
+          )}
+        </RelatedProducts>
+        <Section>
+          <NavigationList showNav={true} />
+        </Section>
 
-      <MissionStatement blok={stories.components.content.body[0]} />
-    </Wrapper>
+        <MissionStatement blok={stories.components.content.body[0]} />
+      </Wrapper>
+    </>
   );
 }
 

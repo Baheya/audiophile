@@ -1,4 +1,5 @@
 import { getStoryblokApi, useStoryblokState } from '@storyblok/react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
@@ -13,25 +14,31 @@ export default function Category({ data: initialStories }) {
   const { category } = router.query;
 
   return (
-    <Wrapper>
-      <TitleBar title={category} />
-      {stories.products.map((story) => (
-        <ProductCard
-          key={story.id}
-          slug={`/${story.full_slug}`}
-          image={`${story.content.product_images[0].filename}/m/`}
-          imageMedium={`${story.content.product_images[1].filename}/m/`}
-          imageLarge={`${story.content.product_images[2].filename}/m/`}
-          kicker={story.content.new}
-          title={`${story.name} ${category}`}
-          description={story.content.description}
-        />
-      ))}
-      <Section>
-        <NavigationList showNav={true} />
-      </Section>
-      <MissionStatement blok={stories.components.content.body[0]} />
-    </Wrapper>
+    <>
+      <Head>
+        <title>{category.slice(0, 1).toUpperCase() + category.slice(1)}</title>
+      </Head>
+
+      <Wrapper>
+        <TitleBar title={category} />
+        {stories.products.map((story) => (
+          <ProductCard
+            key={story.id}
+            slug={`/${story.full_slug}`}
+            image={`${story.content.product_images[0].filename}/m/`}
+            imageMedium={`${story.content.product_images[1].filename}/m/`}
+            imageLarge={`${story.content.product_images[2].filename}/m/`}
+            kicker={story.content.new}
+            title={`${story.name} ${category}`}
+            description={story.content.description}
+          />
+        ))}
+        <Section>
+          <NavigationList showNav={true} />
+        </Section>
+        <MissionStatement blok={stories.components.content.body[0]} />
+      </Wrapper>
+    </>
   );
 }
 

@@ -1,5 +1,6 @@
 import { getStoryblokApi, useStoryblokState } from '@storyblok/react';
 import styled from 'styled-components';
+import Head from 'next/head';
 
 import { FeaturedProducts } from '@components/FeaturedProducts';
 import { HeroSection } from '@components/HeroSection';
@@ -9,14 +10,20 @@ import { NavigationList } from '@components/NavigationList';
 export default function Home({ story }) {
   story = useStoryblokState(story);
   return (
-    <Wrapper>
-      <HeroSection blok={story.content.body[0]} />
-      <Section className="page-navigation">
-        <NavigationList showNav={true} />
-      </Section>
-      <FeaturedProducts blok={story.content.body[1]} />
-      <MissionStatement blok={story.content.body[2]} />
-    </Wrapper>
+    <>
+      <Head>
+        <title>Home</title>
+      </Head>
+
+      <Wrapper>
+        <HeroSection blok={story.content.body[0]} />
+        <Section className="page-navigation">
+          <NavigationList showNav={true} />
+        </Section>
+        <FeaturedProducts blok={story.content.body[1]} />
+        <MissionStatement blok={story.content.body[2]} />
+      </Wrapper>
+    </>
   );
 }
 
