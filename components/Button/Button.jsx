@@ -8,7 +8,6 @@ const Button = forwardRef(
     tag === 'a' ? (
       <Link href={href} passHref>
         <ButtonStyles
-          href={href}
           ref={ref}
           as="a"
           className={className}

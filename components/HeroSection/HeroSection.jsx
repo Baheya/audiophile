@@ -15,11 +15,7 @@ export function HeroSection({ blok }) {
           {blok.hero_product.content.category.name}
         </Title>
         <Text blok={blok.description[0]} light />
-        <Button
-          variant="primary"
-          as="a"
-          href={blok.hero_product.content.full_slug}
-        >
+        <Button variant="primary" tag="a" href={blok.hero_product.full_slug}>
           See Product
         </Button>
       </FullscreenContent>

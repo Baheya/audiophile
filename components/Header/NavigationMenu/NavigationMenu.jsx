@@ -9,13 +9,13 @@ import { NavigationList } from '../../NavigationList';
 
 import { useOverlayTriggerState } from '@react-stately/overlays';
 import { useButton } from '@react-aria/button';
+import { VisuallyHidden } from '@components/VisuallyHidden';
 
 export const Nav = styled.nav`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
 `;
 
 const MenuButton = styled.button.attrs((props) => ({
@@ -111,6 +111,7 @@ export function NavigationMenu({ isBiggerThanTablet }) {
         <>
           <Link passHref href="/">
             <StyledLink>
+              <VisuallyHidden>Go to Audiophile Homepage</VisuallyHidden>
               <Logo />
             </StyledLink>
           </Link>

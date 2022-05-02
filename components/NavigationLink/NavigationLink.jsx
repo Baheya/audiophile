@@ -1,9 +1,17 @@
 import styled from 'styled-components';
 import Link from 'next/link';
+import { VisuallyHidden } from '@components/VisuallyHidden';
 
-export function NavigationLink({ path, children, className, ...delegated }) {
+export function NavigationLink({
+  path,
+  children,
+  className,
+  label,
+  ...delegated
+}) {
   return (
     <Link href={path} passHref {...delegated}>
+      <VisuallyHidden>{label}</VisuallyHidden>
       <StyledLink className={`nav-link ${className ?? ''}`} href={path}>
         {children}
       </StyledLink>

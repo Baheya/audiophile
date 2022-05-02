@@ -27,7 +27,11 @@ export function FeaturedProduct({
           {product.content.name} {product.content.category.name}
         </Title>
         <Text blok={description} />
-        <Button variant={highlight ? 'tertiary' : 'secondary'}>
+        <Button
+          variant={highlight ? 'tertiary' : 'secondary'}
+          tag="a"
+          href={product.full_slug}
+        >
           See Product
         </Button>
       </Content>

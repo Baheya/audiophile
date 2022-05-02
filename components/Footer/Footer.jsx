@@ -30,17 +30,17 @@ export function Footer() {
       </FooterMenuCopyright>
       <FooterMenuListRow>
         <FooterMenuItem>
-          <NavigationLink href="#">
+          <NavigationLink label="Follow on Facebook" href="#">
             <SocialMediaIcon icon="facebook" />
           </NavigationLink>
         </FooterMenuItem>
         <FooterMenuItem>
-          <NavigationLink href="#">
+          <NavigationLink label="Follow on Instagram" href="#">
             <SocialMediaIcon icon="instagram" />
           </NavigationLink>
         </FooterMenuItem>
         <FooterMenuItem>
-          <NavigationLink href="#">
+          <NavigationLink label="Follow on Twitter" href="#">
             <SocialMediaIcon icon="twitter" />
           </NavigationLink>
         </FooterMenuItem>
