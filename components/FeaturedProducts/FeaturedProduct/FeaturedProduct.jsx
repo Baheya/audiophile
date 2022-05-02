@@ -45,7 +45,7 @@ const FeaturedProductContainer = styled.section`
   align-items: center;
   background: ${(props) =>
     props.background?.[0]
-      ? `url(${props.background[0].filename}) no-repeat`
+      ? `url(${props.background[0].filename})/m/ no-repeat`
       : 'none'};
   background-position: center;
   background-size: contain;
@@ -57,7 +57,7 @@ const FeaturedProductContainer = styled.section`
       props.background?.[0]
         ? `url(${
             props.background?.[1]?.filename ?? props.background?.[0]?.filename
-          })`
+          })/m/`
         : 'none'};
   }
 
@@ -68,7 +68,7 @@ const FeaturedProductContainer = styled.section`
             props.background?.[2]?.filename ??
             props.background?.[1]?.filename ??
             props.background?.[0]?.filename
-          })`
+          })/m/`
         : 'none'};
   }
 `;

@@ -9,7 +9,6 @@ export function MissionStatement({ blok }) {
   return (
     <MissionStatementSection {...storyblokEditable(blok)}>
       <DynamicImage
-        blok={blok.image[0]}
         image={[
           `${blok.image[0].image[0].filename}/m/327x300`,
           `${blok.image[0].image[1].filename}/m/698x300`,
