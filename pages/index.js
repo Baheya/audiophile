@@ -13,9 +13,10 @@ export default function Home({ story }) {
     <>
       <Head>
         <title>Home</title>
-        <meta name="description">
-          An online shop for all of your audio dreams.
-        </meta>
+        <meta
+          name="description"
+          content="An online shop for all of your audio dreams."
+        />
       </Head>
 
       <Wrapper>

@@ -9,9 +9,10 @@ export default function Checkout() {
     <>
       <Head>
         <title>Checkout</title>
-        <meta name="description">
-          Review and checkout the products in your cart.
-        </meta>
+        <meta
+          name="description"
+          content="Review and checkout the products in your cart."
+        />
       </Head>
       <PageWrapper>
         <Card>

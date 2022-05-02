@@ -17,10 +17,11 @@ export default function Category({ data: initialStories }) {
     <>
       <Head>
         <title>{category.slice(0, 1).toUpperCase() + category.slice(1)}</title>
-        <meta name="description">
-          A list of all available products for sale in the{' '}
-          {category.slice(0, 1).toUpperCase() + category.slice(1)} category.
-        </meta>
+        <meta
+          name="description"
+          content={`A list of all available products for sale in the
+          ${category.slice(0, 1).toUpperCase() + category.slice(1)} category.`}
+        />
       </Head>
 
       <Wrapper>
