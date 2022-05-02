@@ -18,6 +18,10 @@ export default function Product({ data: initialStories }) {
     <>
       <Head>
         <title>{stories.products[0].name}</title>
+        <meta name="description">
+          Product details for {stories.products[0].name} including pricing,
+          product images, and what&apos;s included in the box.
+        </meta>
       </Head>
       <Wrapper>
         <TitleBar title={category} />
