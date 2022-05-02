@@ -9,6 +9,7 @@ import { useButton } from '@react-aria/button';
 import { CartButtonIcon } from '@components/CartButton';
 import { Cart } from '@components/Cart';
 import { ClientOnly } from '@components/ClientOnly';
+import { VisuallyHidden } from '@components/VisuallyHidden';
 
 export const HeaderStyles = styled.header`
   position: absolute;
@@ -65,9 +66,6 @@ export function Header() {
   let openButtonRef = useRef();
   let closeButtonRef = useRef();
 
-  // useButton ensures that focus management is handled correctly,
-  // across all browsers. Focus is restored to the button once the
-  // dialog closes.
   let { buttonProps: openButtonProps } = useButton(
     {
       onPress: () => state.open(),
@@ -80,6 +78,7 @@ export function Header() {
       <HeaderStyles className="header">
         <NavigationMenu isBiggerThanTablet={isBiggerThanTablet} />
         <StyledLink as="button" {...openButtonProps} ref={openButtonRef}>
+          <VisuallyHidden tag="label">View Cart</VisuallyHidden>
           <CartButtonIcon />
         </StyledLink>
       </HeaderStyles>

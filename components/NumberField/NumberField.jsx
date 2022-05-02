@@ -4,6 +4,8 @@ import { useNumberField } from '@react-aria/numberfield';
 import { useNumberFieldState } from '@react-stately/numberfield';
 import { useRef } from 'react';
 
+import { VisuallyHidden } from '@components/VisuallyHidden';
+
 export function NumberField(props) {
   let state = useNumberFieldState({ ...props, locale: 'en-US' });
   let inputRef = useRef();
@@ -25,7 +27,9 @@ export function NumberField(props) {
 
   return (
     <Wrapper>
-      <VisuallyHiddenLabel {...labelProps}>{props.label}</VisuallyHiddenLabel>
+      <VisuallyHidden tag="label" {...labelProps}>
+        {props.label}
+      </VisuallyHidden>
       <Group {...groupProps}>
         <Button
           {...decrementProps}
@@ -94,15 +98,4 @@ const Input = styled.input`
   display: block;
   max-width: 100%;
   width: 100%;
-`;
-
-const VisuallyHiddenLabel = styled.label`
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
-  padding: 0;
-  border: 0;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  margin: -1px;
 `;
