@@ -1,79 +1,85 @@
 import styled from 'styled-components';
+import Head from 'next/head';
 
 import { ClientOnly } from '@components/ClientOnly';
 import { ProductSummary } from '@components/ProductSummary';
 
 export default function Checkout() {
   return (
-    <PageWrapper>
-      <Card>
-        <CheckoutTitle>Checkout</CheckoutTitle>
-        <Section>
-          <SectionTitle>Billing Details</SectionTitle>
-          <Field>
-            <Label>Name</Label>
-            <Input placeholder="Alexei Ward" />
-          </Field>
-          <Field>
-            <Label>Email Address</Label>
-            <Input placeholder="alexei@mail.com" />
-          </Field>
-          <Field>
-            <Label>Phone Number</Label>
-            <Input placeholder="+1 202-555-0136" />
-          </Field>
-        </Section>
-        <Section>
-          <SectionTitle>Shipping Info</SectionTitle>
-          <Field>
-            <Label>Your Address</Label>
-            <Input placeholder="1137 Williams Avenue" />
-          </Field>
-          <Field>
-            <Label>ZIP Code</Label>
-            <Input placeholder="10001" />
-          </Field>
-          <Field>
-            <Label>City</Label>
-            <Input placeholder="New York" />
-          </Field>
-          <Field>
-            <Label>Country</Label>
-            <Input placeholder="United States" />
-          </Field>
-        </Section>
-        <Section>
-          <SectionTitle>Payment Details</SectionTitle>
-          <Label as="p">Payment Method</Label>
-          <RadioInputWrapper>
-            <Input value="e-Money" type="radio" name="payment" id="digital" />
-            <Label htmlFor="e-Money">e-Money</Label>
-          </RadioInputWrapper>
+    <>
+      <Head>
+        <title>Checkout</title>
+      </Head>
+      <PageWrapper>
+        <Card>
+          <CheckoutTitle>Checkout</CheckoutTitle>
+          <Section>
+            <SectionTitle>Billing Details</SectionTitle>
+            <Field>
+              <Label>Name</Label>
+              <Input placeholder="Alexei Ward" />
+            </Field>
+            <Field>
+              <Label>Email Address</Label>
+              <Input placeholder="alexei@mail.com" />
+            </Field>
+            <Field>
+              <Label>Phone Number</Label>
+              <Input placeholder="+1 202-555-0136" />
+            </Field>
+          </Section>
+          <Section>
+            <SectionTitle>Shipping Info</SectionTitle>
+            <Field>
+              <Label>Your Address</Label>
+              <Input placeholder="1137 Williams Avenue" />
+            </Field>
+            <Field>
+              <Label>ZIP Code</Label>
+              <Input placeholder="10001" />
+            </Field>
+            <Field>
+              <Label>City</Label>
+              <Input placeholder="New York" />
+            </Field>
+            <Field>
+              <Label>Country</Label>
+              <Input placeholder="United States" />
+            </Field>
+          </Section>
+          <Section>
+            <SectionTitle>Payment Details</SectionTitle>
+            <Label as="p">Payment Method</Label>
+            <RadioInputWrapper>
+              <Input value="e-Money" type="radio" name="payment" id="digital" />
+              <Label htmlFor="e-Money">e-Money</Label>
+            </RadioInputWrapper>
 
-          <RadioInputWrapper>
-            <Input
-              value="Cash on Delivery"
-              type="radio"
-              name="payment"
-              id="cash"
-            />
-            <Label htmlFor="cash">Cash on Delivery</Label>
-          </RadioInputWrapper>
+            <RadioInputWrapper>
+              <Input
+                value="Cash on Delivery"
+                type="radio"
+                name="payment"
+                id="cash"
+              />
+              <Label htmlFor="cash">Cash on Delivery</Label>
+            </RadioInputWrapper>
 
-          <Field>
-            <Label>e-Money Number</Label>
-            <Input placeholder="238521993" />
-          </Field>
-          <Field>
-            <Label>e-Money Pin</Label>
-            <Input placeholder="6891" />
-          </Field>
-        </Section>
-      </Card>
-      <ClientOnly>
-        <ProductSummary />
-      </ClientOnly>
-    </PageWrapper>
+            <Field>
+              <Label>e-Money Number</Label>
+              <Input placeholder="238521993" />
+            </Field>
+            <Field>
+              <Label>e-Money Pin</Label>
+              <Input placeholder="6891" />
+            </Field>
+          </Section>
+        </Card>
+        <ClientOnly>
+          <ProductSummary />
+        </ClientOnly>
+      </PageWrapper>
+    </>
   );
 }
 
