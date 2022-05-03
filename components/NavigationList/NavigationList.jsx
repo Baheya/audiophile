@@ -20,9 +20,9 @@ export function NavigationList({ showNav, isBiggerThanTablet, className }) {
   );
 }
 
-const NavigationMenuListStyles = styled.ul.attrs({
-  id: 'products-dropdown',
-})`
+const NavigationMenuListStyles = styled.ul.attrs((props) => ({
+  id: props.visible ? 'products-dropdown' : 'navigation-list',
+}))`
   list-style: none;
   display: grid;
   grid-gap: 10px;

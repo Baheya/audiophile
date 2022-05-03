@@ -25,7 +25,7 @@ export function ProductCard({
         {kicker ? <Kicker>New Product</Kicker> : null}
         <Title>{title}</Title>
         <Text>{description}</Text>
-        <Button as="a" href={slug} variant="primary">
+        <Button tag="a" href={slug} variant="primary">
           See Product
         </Button>
       </ContentWrapper>

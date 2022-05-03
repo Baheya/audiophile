@@ -122,7 +122,11 @@ export function NavigationMenu({ isBiggerThanTablet }) {
         </>
       ) : (
         <>
-          <MenuButton toggled={showNav} onClick={toggleNav}>
+          <MenuButton
+            visible={!isBiggerThanTablet}
+            toggled={showNav}
+            onClick={toggleNav}
+          >
             <MenuButtonIcon />
           </MenuButton>
           <NavigationList
@@ -132,6 +136,7 @@ export function NavigationMenu({ isBiggerThanTablet }) {
 
           <Link passHref href="/">
             <StyledLink>
+              <VisuallyHidden>Go to Audiophile Homepage</VisuallyHidden>
               <Logo />
             </StyledLink>
           </Link>
