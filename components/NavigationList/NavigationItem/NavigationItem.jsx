@@ -18,7 +18,7 @@ export function NavigationItem({
             <ShopLink
               tabIndex="0"
               className="nav-link"
-              aria-describedby="headphones"
+              label={pageName}
               tag="a"
               href={pagePath}
             />

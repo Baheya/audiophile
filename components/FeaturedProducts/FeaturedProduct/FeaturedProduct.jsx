@@ -23,7 +23,7 @@ export function FeaturedProduct({
         />
       ) : null}
       <Content>
-        <Title variant={highlight && 'lg'}>
+        <Title tag="h3" variant={highlight && 'lg'}>
           {product.content.name} {product.content.category.name}
         </Title>
         <Text blok={description} />

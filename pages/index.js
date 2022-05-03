@@ -6,6 +6,7 @@ import { FeaturedProducts } from '@components/FeaturedProducts';
 import { HeroSection } from '@components/HeroSection';
 import { MissionStatement } from '@components/MissionStatement';
 import { NavigationList } from '@components/NavigationList';
+import { VisuallyHidden } from '@components/VisuallyHidden';
 
 export default function Home({ story }) {
   story = useStoryblokState(story);
@@ -20,6 +21,8 @@ export default function Home({ story }) {
       </Head>
 
       <Wrapper>
+        <VisuallyHidden tag="h1">Audiophile Home</VisuallyHidden>
+        <VisuallyHidden tag="h2">Products</VisuallyHidden>
         <HeroSection blok={story.content.body[0]} />
         <Section className="page-navigation">
           <NavigationList showNav={true} />

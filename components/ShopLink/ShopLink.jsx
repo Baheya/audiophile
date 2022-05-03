@@ -2,11 +2,12 @@ import styled from 'styled-components';
 import { BaseButton } from '@components/Button/Button';
 
 import { ChevronRight } from '../ChevronRight';
+import { VisuallyHidden } from '@components/VisuallyHidden';
 
-export function ShopLink({ tag, ...delegated }) {
+export function ShopLink({ tag, label, ...delegated }) {
   return (
     <ShopLinkStyles as={tag} {...delegated}>
-      Shop
+      Shop <VisuallyHidden>{label}</VisuallyHidden>
       <span>
         <ChevronRight />
       </span>

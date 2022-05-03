@@ -10,7 +10,7 @@ export function HeroSection({ blok }) {
     <FullscreenSection>
       <FullscreenContent>
         <Kicker light>New Product</Kicker>
-        <Title variant="lg" light>
+        <Title variant="lg" tag="h3" light>
           {blok.hero_product.content.name}{' '}
           {blok.hero_product.content.category.name}
         </Title>
