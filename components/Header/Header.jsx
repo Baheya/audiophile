@@ -78,7 +78,7 @@ export function Header() {
       <HeaderStyles className="header">
         <NavigationMenu isBiggerThanTablet={isBiggerThanTablet} />
         <StyledLink as="button" {...openButtonProps} ref={openButtonRef}>
-          <VisuallyHidden tag="label">View Cart</VisuallyHidden>
+          <VisuallyHidden tag="span">View Cart</VisuallyHidden>
           <CartButtonIcon />
         </StyledLink>
       </HeaderStyles>

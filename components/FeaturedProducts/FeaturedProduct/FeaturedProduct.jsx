@@ -61,7 +61,7 @@ const FeaturedProductContainer = styled.section`
       props.background?.[0]
         ? `url(${
             props.background?.[1]?.filename ?? props.background?.[0]?.filename
-          })/m/`
+          }/m/)`
         : 'none'};
   }
 
@@ -72,7 +72,7 @@ const FeaturedProductContainer = styled.section`
             props.background?.[2]?.filename ??
             props.background?.[1]?.filename ??
             props.background?.[0]?.filename
-          })/m/`
+          }/m/)`
         : 'none'};
   }
 `;
