@@ -1,16 +1,31 @@
+import styled from 'styled-components';
+import { useRef } from 'react';
+import { useRouter } from 'next/router';
+import { useButton } from '@react-aria/button';
+
+import { Button } from '@components/Button';
 import { Modal } from '@components/Modal';
 import { Price } from '@components/Price';
-import { Button } from '@components/Button';
-import { useStickyState } from 'hooks';
-import Link from 'next/link';
-import styled from 'styled-components';
 import { CartItem } from './CartItem/CartItem';
+
+import { useStickyState } from 'hooks';
 
 export function Cart({ isOpen, onClose }) {
   const [cart, setCart] = useStickyState([], 'cart');
   const total = cart.reduce(
     (prev, curr) => prev + curr.price * curr.quantity,
     0
+  );
+  const router = useRouter();
+  const closeButtonRef = useRef();
+  const { buttonProps: closeButtonProps } = useButton(
+    {
+      onPress: () => {
+        router.push('/checkout');
+        onClose();
+      },
+    },
+    closeButtonRef
   );
 
   return (
@@ -43,11 +58,9 @@ export function Cart({ isOpen, onClose }) {
         <TotalLabel>Total</TotalLabel>
         <Price amount={total} />
       </Wrapper>
-      <Link href="/checkout" passHref>
-        <Button as="a" variant="primary">
-          Checkout
-        </Button>
-      </Link>
+      <Button {...closeButtonProps} ref={closeButtonRef} variant="primary">
+        Checkout
+      </Button>
     </Modal>
   );
 }
@@ -78,24 +91,12 @@ const CartItems = styled.ul`
 const TotalLabel = styled.p`
   font-size: 15px;
   line-height: 25px;
-  /* identical to box height, or 167% */
-
-  color: #000000;
+color: #000000;
 
   mix-blend-mode: normal;
   opacity: 0.5;
 `;
 
-const TotalValue = styled.p`
-  font-size: 15px;
-  line-height: 25px;
-  /* identical to box height, or 167% */
-
-  color: #000000;
-
-  mix-blend-mode: normal;
-  opacity: 0.5;
-`;
 
 const Wrapper = styled.div`
   display: flex;

@@ -14,7 +14,7 @@ export function CheckoutConfirmation({
   return (
     <Modal className="confirmation" isOpen onClose={onClose} isDismissable>
       <Title>Thank you for your order</Title>
-      <p>You will receive an e-mail confirmation shortly</p>
+      <Text>You will receive an e-mail confirmation shortly</Text>
       <Card>
         <CardBody>
           <CartItem
@@ -48,6 +48,7 @@ const Title = styled.h2`
   line-height: 36px;
   letter-spacing: 1.14286px;
   text-transform: uppercase;
+  margin-bottom: 1.5rem;
 
   color: #000000;
 `;
@@ -56,6 +57,7 @@ const Card = styled.div`
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 2rem;
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -125,4 +127,8 @@ const PriceLabel = styled.div`
 
 const BackButton = styled(Button)`
   width: 100%;
+`;
+
+const Text = styled.p`
+  margin-bottom: 1rem;
 `;

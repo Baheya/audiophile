@@ -81,4 +81,9 @@ const ButtonStyles = styled(BaseButton)`
   .cart & {
     width: 100%;
   }
+
+  &:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+  }
 `;
