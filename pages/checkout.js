@@ -56,7 +56,9 @@ export default function Checkout() {
             <Label as="p">Payment Method</Label>
             <RadioInputWrapper>
               <Input value="e-Money" type="radio" name="payment" id="digital" />
-              <Label htmlFor="e-Money">e-Money</Label>
+              <Label htmlFor="e-Money" className="radio-label">
+                e-Money
+              </Label>
             </RadioInputWrapper>
 
             <RadioInputWrapper>
@@ -66,7 +68,9 @@ export default function Checkout() {
                 name="payment"
                 id="cash"
               />
-              <Label htmlFor="cash">Cash on Delivery</Label>
+              <Label htmlFor="cash" className="radio-label">
+                Cash on Delivery
+              </Label>
             </RadioInputWrapper>
 
             <Field>
@@ -91,6 +95,7 @@ const PageWrapper = styled.main`
   display: grid;
   grid-template-columns: clamp(1.5rem, 8%, 18rem) 1fr clamp(1.5rem, 8%, 18rem);
   gap: 25px 0;
+  padding: 40px 0;
   background-color: #f2f2f2;
 
   & > * {
@@ -129,8 +134,13 @@ const Label = styled.label`
   line-height: 16px;
   letter-spacing: -0.214286px;
   display: block;
+  margin-bottom: 10px;
 
   color: #000000;
+
+  &.radio-label {
+    margin-bottom: 0;
+  }
 `;
 
 const Input = styled.input.attrs((props) => ({
