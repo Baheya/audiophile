@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useRef } from 'react';
-import { useOverlay, usePreventScroll, useModal } from '@react-aria/overlays';
+import { useOverlay, useModal } from '@react-aria/overlays';
 import { useDialog } from '@react-aria/dialog';
 import { FocusScope } from '@react-aria/focus';
 
@@ -10,7 +10,6 @@ export function Modal(props) {
   let ref = useRef();
   let { overlayProps, underlayProps } = useOverlay(props, ref);
 
-  usePreventScroll();
   let { modalProps } = useModal();
 
   let { dialogProps, titleProps } = useDialog(props, ref);
@@ -26,6 +25,7 @@ export function Modal(props) {
         bottom: 0,
         right: 0,
         background: 'rgba(0, 0, 0, 0.5)',
+        display: 'flex',
       }}
       {...underlayProps}
     >
@@ -58,6 +58,7 @@ export const Overlay = styled.div`
   border-radius: 7px;
 
   .cart & {
+    align-self: start;
     min-width: 330px;
     max-width: 380px;
     width: 100%;
