@@ -26,8 +26,9 @@ export default function Category({ data: initialStories }) {
 
       <Wrapper>
         <TitleBar title={category} />
-        {stories.products.map((story) => (
+        {stories.products.map((story, i) => (
           <ProductCard
+            index={i}
             key={story.id}
             slug={`/${story.full_slug}`}
             image={`${story.content.product_images[0].filename}/m/`}

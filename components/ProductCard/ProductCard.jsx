@@ -13,10 +13,12 @@ export function ProductCard({
   title,
   description,
   slug,
+  index,
 }) {
   return (
     <Wrapper className="product-card">
       <ProductImage
+        loading={index === 0 ? 'eager' : 'lazy'}
         image={image}
         imageMedium={imageMedium}
         imageLarge={imageLarge}

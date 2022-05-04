@@ -14,6 +14,7 @@ export function MissionStatement({ blok }) {
           `${blok.image[0].image[1].filename}/m/698x300`,
           `${blok.image[0].image[2].filename}/m/540x588`,
         ]}
+        loading="lazy"
       />
       <Content>
         <Title blok={blok.title[0]} />

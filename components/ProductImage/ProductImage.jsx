@@ -1,19 +1,25 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 
-export function ProductImage({ image, imageMedium, imageLarge }) {
+export function ProductImage({ image, imageMedium, imageLarge, loading }) {
   return (
     <>
       <ImageWrapper small>
-        <StyledImage layout="fill" alt="" src={image} />
+        <StyledImage layout="fill" alt="" loading={loading} src={image} />
       </ImageWrapper>
       <ImageWrapper medium>
-        <StyledImage layout="fill" alt="" src={imageMedium ?? image} />
+        <StyledImage
+          layout="fill"
+          alt=""
+          loading={loading}
+          src={imageMedium ?? image}
+        />
       </ImageWrapper>
       <ImageWrapper large>
         <StyledImage
           layout="fill"
           alt=""
+          loading={loading}
           src={imageLarge ?? imageMedium ?? image}
         />
       </ImageWrapper>

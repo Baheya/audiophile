@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-export function DynamicImage({ image }) {
+export function DynamicImage({ image, loading }) {
   return (
     <ImageWrapper>
       <source media="(min-width: 1024px)" srcSet={image[2]} />
       <source media="(min-width: 768px)" srcSet={image[1]} />
-      <StyledImage alt="" src={image[0]} />
+      <StyledImage loading={loading} alt="" src={image[0]} />
     </ImageWrapper>
   );
 }
