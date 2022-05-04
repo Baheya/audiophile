@@ -17,8 +17,8 @@ export function ProductSummary() {
     (prev, curr) => prev + curr.price * curr.quantity,
     0
   );
-  const shipping = 50;
-  const vat = 1079;
+  const shipping = total !== 0 ? 50 : 0;
+  const vat = total !== 0 ? 1079 : 0;
 
   let state = useOverlayTriggerState({});
   let openButtonRef = useRef();
@@ -26,6 +26,7 @@ export function ProductSummary() {
   let { buttonProps: openButtonProps } = useButton(
     {
       onPress: () => state.open(),
+      isDisabled: total === 0,
     },
     openButtonRef
   );
@@ -63,8 +64,8 @@ export function ProductSummary() {
       </Row>
       <ConfirmationButton
         variant="primary"
-        {...openButtonProps}
         ref={openButtonRef}
+        {...openButtonProps}
       >
         Continue & Pay
       </ConfirmationButton>
