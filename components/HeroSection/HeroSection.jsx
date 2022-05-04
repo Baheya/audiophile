@@ -4,10 +4,18 @@ import { Button } from '@components/Button';
 import { Kicker } from '@components/Kicker';
 import { Text } from '@components/Text';
 import { Title } from '@components/Title';
+import { DynamicImage } from '@components/DynamicImage';
 
 export function HeroSection({ blok }) {
   return (
-    <FullscreenSection>
+    <FullscreenSection className="hero_section">
+      <DynamicImage
+        image={[
+          `${blok.background_image[0].filename}/m/`,
+          `${blok.background_image[1].filename}/m/`,
+          `${blok.background_image[2].filename}/m/`,
+        ]}
+      />
       <FullscreenContent>
         <Kicker light>New Product</Kicker>
         <Title variant="lg" tag="h3" light>
@@ -37,7 +45,7 @@ const Section = styled.section`
 
 const FullscreenSection = styled(Section)`
   && {
-    background: url('/images/home/mobile/image-header.jpg') no-repeat;
+    /* background: url('/images/home/mobile/image-header.jpg') no-repeat; */
     background-position: center;
     background-size: cover;
     aspect-ratio: 0.625;
@@ -45,7 +53,7 @@ const FullscreenSection = styled(Section)`
     border-radius: 0;
 
     @media (min-width: 768px) {
-      background: url('/images/home/tablet/image-header.jpg') no-repeat;
+      /* background: url('/images/home/tablet/image-header.jpg') no-repeat; */
 
       background-position: center;
       background-size: contain;
@@ -54,7 +62,7 @@ const FullscreenSection = styled(Section)`
     }
 
     @media (min-width: 1024px) {
-      background: url('/images/home/desktop/image-hero.jpg') no-repeat;
+      /* background: url('/images/home/desktop/image-hero.jpg') no-repeat; */
 
       background-position: center;
       aspect-ratio: 1.975;
