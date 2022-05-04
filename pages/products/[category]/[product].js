@@ -26,8 +26,9 @@ export default function Product({ data: initialStories }) {
       </Head>
       <Wrapper>
         <TitleBar title={category} />
-        {stories.products.map((story) => (
+        {stories.products.map((story, i) => (
           <ProductDetailCard
+            index={i}
             key={story.id}
             slug={`/${story.full_slug}`}
             image={story.content.product_detail_images[0].filename}

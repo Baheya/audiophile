@@ -19,7 +19,6 @@ export function ProductCard({
     <Wrapper className="product-card">
       <ProductImage
         priority={index === 0 ? true : false}
-        loading="lazy"
         image={image}
         imageMedium={imageMedium}
         imageLarge={imageLarge}

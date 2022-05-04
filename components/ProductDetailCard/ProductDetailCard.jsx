@@ -26,12 +26,14 @@ export function ProductDetailCard({
   productImages,
   galleryImages,
   thumbnail,
+  index,
   ...props
 }) {
   return (
     <Wrapper className="product-detail-card">
       <ContentWrapper>
         <ProductImage
+          priority={index === 0 ? true : false}
           image={productImages[0].filename}
           imageMedium={productImages[1].filename}
           imageLarge={productImages[2].filename}

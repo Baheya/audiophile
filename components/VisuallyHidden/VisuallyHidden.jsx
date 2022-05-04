@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
-export function VisuallyHidden({ tag, children }) {
-  return <VisuallyHiddenElement as={tag}>{children}</VisuallyHiddenElement>;
+export function VisuallyHidden({ tag, children, ...delegated }) {
+  return (
+    <VisuallyHiddenElement as={tag} {...delegated}>
+      {children}
+    </VisuallyHiddenElement>
+  );
 }
 
 const VisuallyHiddenElement = styled.span`
