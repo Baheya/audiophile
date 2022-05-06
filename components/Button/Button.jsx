@@ -6,7 +6,7 @@ import Link from 'next/link';
 const Button = forwardRef(
   ({ className, tag, href, variant, children, ...delegated }, ref) =>
     tag === 'a' ? (
-      <Link href={href} passHref>
+      <Link href={href} passHref prefetch={false}>
         <ButtonStyles
           ref={ref}
           as="a"

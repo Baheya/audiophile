@@ -10,7 +10,7 @@ export function NavigationLink({
   ...delegated
 }) {
   return (
-    <Link href={path} passHref {...delegated}>
+    <Link href={path} passHref prefetch={false} {...delegated}>
       <StyledLink className={`nav-link ${className ?? ''}`}>
         <VisuallyHidden>{label}</VisuallyHidden>
         {children}

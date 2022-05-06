@@ -36,7 +36,7 @@ export function NavigationMenu({ isBiggerThanTablet, isHeaderNav }) {
     <Nav>
       {isBiggerThanTablet ? (
         <>
-          <Link passHref href="/">
+          <Link passHref href="/" prefetch={false}>
             <StyledLink>
               <VisuallyHidden>Go to Audiophile Homepage</VisuallyHidden>
               <Logo />
@@ -63,7 +63,7 @@ export function NavigationMenu({ isBiggerThanTablet, isHeaderNav }) {
             isBiggerThanTablet={isBiggerThanTablet}
           />
 
-          <Link passHref href="/">
+          <Link passHref href="/" prefetch={false}>
             <StyledLink>
               <VisuallyHidden>Go to Audiophile Homepage</VisuallyHidden>
               <Logo />
