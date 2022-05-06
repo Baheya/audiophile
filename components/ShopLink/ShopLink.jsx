@@ -44,13 +44,4 @@ const ShopLinkStyles = styled(BaseButton)`
     right: 0;
     content: '';
   }
-
-  &:focus {
-    outline: 1px solid var(--orange-200);
-    transition: outline-offset 0.25s ease;
-  }
-  &:focus:not(:active) {
-    outline: 1px solid var(--orange-200);
-    outline-offset: -5px;
-  }
 `;

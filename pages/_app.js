@@ -1,11 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 import { SSRProvider } from '@react-aria/ssr';
 import { OverlayProvider } from '@react-aria/overlays';
-import styled from 'styled-components';
 
-import { Header } from '../components/Header';
-import { Footer } from '../components/Footer';
 import { storyblokInit, apiPlugin } from '@storyblok/react';
+import { Layout } from '@components/Layout';
 
 storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_SB_PREVIEW_TOKEN,
@@ -40,13 +38,10 @@ html {
 
 * {
   margin: 0;
-
-    &:focus {
+  
+  &:focus-visible:not(:active) {
     outline: 1px solid var(--orange-200);
     transition: outline-offset 0.25s ease;
-  }
-  &:focus:not(:active) {
-    outline: 1px solid var(--orange-200);
     outline-offset: 5px;
   }
 }
@@ -86,33 +81,13 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 `;
 
-const PageLayout = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 70px 1fr auto;
-
-  & > header {
-    grid-row: 1 / 2;
-  }
-
-  & > main {
-    grid-row: 2 / 3;
-  }
-
-  & > footer {
-    grid-row: 3 / 4;
-  }
-`;
-
 function App({ Component, pageProps }) {
   return (
     <SSRProvider>
       <OverlayProvider>
-        <PageLayout>
-          <Header />
+        <Layout>
           <Component {...pageProps} />
-          <Footer />
-        </PageLayout>
+        </Layout>
         <GlobalStyle />
       </OverlayProvider>
     </SSRProvider>

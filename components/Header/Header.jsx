@@ -1,5 +1,7 @@
+/* eslint-disable react/display-name */
 import styled from 'styled-components';
 import { useEffect, useState, useRef } from 'react';
+import dynamic from 'next/dynamic';
 
 import { NavigationMenu } from './NavigationMenu';
 
@@ -7,9 +9,14 @@ import { useOverlayTriggerState } from '@react-stately/overlays';
 import { OverlayContainer } from '@react-aria/overlays';
 import { useButton } from '@react-aria/button';
 import { CartButtonIcon } from '@components/CartButton';
-import { Cart } from '@components/Cart';
+// import { Cart } from '@components/Cart';
 import { ClientOnly } from '@components/ClientOnly';
 import { VisuallyHidden } from '@components/VisuallyHidden';
+
+const DynamicCart = dynamic(() => import('../Cart').then((mod) => mod.Cart), {
+  ssr: false,
+  loading: () => <p>...loading...</p>,
+});
 
 export function Header() {
   const [isBiggerThanTablet, setIsBiggerThanTablet] = useState(false);
@@ -42,7 +49,7 @@ export function Header() {
   return (
     <>
       <HeaderStyles className="header">
-        <NavigationMenu isBiggerThanTablet={isBiggerThanTablet} />
+        <NavigationMenu isBiggerThanTablet={isBiggerThanTablet} isHeaderNav />
         <StyledLink as="button" ref={openButtonRef} {...openButtonProps}>
           <VisuallyHidden tag="span">View Cart</VisuallyHidden>
           <CartButtonIcon />
@@ -51,7 +58,7 @@ export function Header() {
       {state.isOpen && (
         <ClientOnly>
           <OverlayContainer>
-            <Cart isOpen onClose={state.close} />
+            <DynamicCart isOpen onClose={state.close} />
           </OverlayContainer>
         </ClientOnly>
       )}
@@ -63,15 +70,6 @@ const StyledLink = styled.a`
   background: none;
   border: none;
   cursor: pointer;
-
-  &:focus {
-    outline: 1px solid var(--orange-200);
-    transition: outline-offset 0.25s ease;
-  }
-  &:focus:not(:active) {
-    outline: 1px solid var(--orange-200);
-    outline-offset: 5px;
-  }
 `;
 
 export const HeaderStyles = styled.header`

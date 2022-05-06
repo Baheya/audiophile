@@ -10,7 +10,7 @@ import { VisuallyHidden } from '@components/VisuallyHidden';
 
 import { keyboardHandler } from '../../../utils/keyboardHandler';
 
-export function NavigationMenu({ isBiggerThanTablet }) {
+export function NavigationMenu({ isBiggerThanTablet, isHeaderNav }) {
   const [showNav, setShowNav] = useState(false);
   const { pathname } = useRouter();
 
@@ -43,6 +43,7 @@ export function NavigationMenu({ isBiggerThanTablet }) {
             </StyledLink>
           </Link>
           <NavigationList
+            isHeaderNav={isHeaderNav}
             showNav={showNav}
             isBiggerThanTablet={isBiggerThanTablet}
           />
@@ -57,6 +58,7 @@ export function NavigationMenu({ isBiggerThanTablet }) {
             <MenuButtonIcon />
           </MenuButton>
           <NavigationList
+            isHeaderNav={isHeaderNav}
             showNav={showNav}
             isBiggerThanTablet={isBiggerThanTablet}
           />
@@ -101,15 +103,6 @@ const MenuButton = styled.button.attrs((props) => ({
   line-height: 1.1;
   transition: 220ms all ease-in-out;
 
-  &:focus {
-    outline: 1px solid var(--orange-200);
-    transition: outline-offset 0.25s ease;
-  }
-  &:focus:not(:active) {
-    outline: 1px solid var(--orange-200);
-    outline-offset: 5px;
-  }
-
   @media screen and (-ms-high-contrast: active) {
     border: 2px solid currentcolor;
   }
@@ -123,13 +116,15 @@ const StyledLink = styled.a`
   background: none;
   border: none;
   cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 
-  &:focus {
-    outline: 1px solid var(--orange-200);
-    transition: outline-offset 0.25s ease;
-  }
-  &:focus:not(:active) {
-    outline: 1px solid var(--orange-200);
-    outline-offset: 5px;
+  @media (min-width: 1024px) {
+    position: static;
+    left: initial;
+    top: initial;
+    transform: none;
   }
 `;

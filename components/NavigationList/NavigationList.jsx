@@ -4,7 +4,7 @@ import { NavigationItem } from './NavigationItem';
 
 import { constants } from '../../constants';
 
-export function NavigationList({ showNav, isBiggerThanTablet, className }) {
+export function NavigationList({ showNav, isBiggerThanTablet, className, isHeaderNav }) {
   return (
     <NavigationMenuListStyles className={className} showNav={showNav}>
       {constants.navigation.map((page, i) => (
@@ -13,7 +13,7 @@ export function NavigationList({ showNav, isBiggerThanTablet, className }) {
           pageName={page.name}
           pageImage={page.image}
           pagePath={page.path}
-          isBiggerThanTablet={isBiggerThanTablet}
+          isBiggerThanTablet={isBiggerThanTablet} isHeaderNav={isHeaderNav}
         />
       ))}
     </NavigationMenuListStyles>

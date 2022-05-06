@@ -1,9 +1,8 @@
 export function keyboardHandler(e) {
   if (typeof window === 'undefined') return null;
-  //   const dropdownButton = document.querySelector('.dropdown-button');
+
   const menuButton = document?.querySelector('.menu-button');
-  const subNavLinks = document?.querySelectorAll('.nav-link');
-  //   const mainNavLinks = document?.querySelectorAll('.main-navigation-link');
+  const subNavLinks = document?.querySelectorAll('.header-nav-link');
 
   const firstFocusableEl = menuButton;
 

@@ -5,21 +5,7 @@ const LogoStyles = styled.svg.attrs({
   width: 143,
   height: 25,
   'aria-hidden': 'true',
-})`
-  header & {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-
-    @media (min-width: 1024px) {
-      position: static;
-      left: initial;
-      top: initial;
-      transform: none;
-    }
-  }
-`;
+})``;
 
 export const Logo = () => {
   return (

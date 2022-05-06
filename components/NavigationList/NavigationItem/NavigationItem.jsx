@@ -8,6 +8,7 @@ export function NavigationItem({
   pageName,
   isBiggerThanTablet,
   pagePath = '/',
+  isHeaderNav,
 }) {
   return (
     <>
@@ -17,7 +18,7 @@ export function NavigationItem({
             {pageName}
             <ShopLink
               tabIndex="0"
-              className="nav-link"
+              className={isHeaderNav ? 'header-nav-link' : ''}
               label={pageName}
               tag="a"
               href={pagePath}
