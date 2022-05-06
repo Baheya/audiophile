@@ -77,13 +77,14 @@ const Wrapper = styled.article`
   grid-column: 2 / 3;
   gap: 2rem;
   width: 100%;
+  margin-top: 4rem;
 
   @media (min-width: 768px) {
     gap: 3rem;
   }
 
   @media (min-width: 1024px) {
-    gap: 8rem;
+    gap: 6rem;
   }
 `;
 
@@ -207,7 +208,7 @@ const Item = styled.li`
 const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8rem;
+  gap: 4rem;
   @media (min-width: 1024px) {
     flex-direction: row;
     gap: 0;

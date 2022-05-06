@@ -5,9 +5,10 @@ import { useRouter } from 'next/router';
 
 import { MissionStatement } from '@components/MissionStatement';
 import { NavigationList } from '@components/NavigationList';
-import { TitleBar } from '@components/TitleBar';
+import { Title } from '@components/Title';
 import { ProductDetailCard } from '@components/ProductDetailCard';
 import { RelatedProduct } from '@components/RelatedProduct';
+import { VisuallyHidden } from '@components/VisuallyHidden';
 
 export default function Product({ data: initialStories }) {
   const stories = useStoryblokState(initialStories);
@@ -25,7 +26,7 @@ export default function Product({ data: initialStories }) {
         />
       </Head>
       <Wrapper>
-        <TitleBar title={category} />
+        <VisuallyHidden tag="h1">Product Detail Page</VisuallyHidden>
         {stories.products.map((story, i) => (
           <ProductDetailCard
             index={i}
@@ -46,6 +47,7 @@ export default function Product({ data: initialStories }) {
           />
         ))}
         <RelatedProducts>
+          <Title tag="h2">You might also like</Title>
           {stories.products.map((story) =>
             story.content.related_products.map((product) => (
               <RelatedProduct
@@ -70,7 +72,11 @@ export default function Product({ data: initialStories }) {
 const Wrapper = styled.main`
   display: grid;
   grid-template-columns: clamp(1.5rem, 12%, 18rem) 1fr clamp(1.5rem, 12%, 18rem);
-  gap: 25px 0;
+  gap: 3rem 0;
+
+  @media (min-width: 768px) {
+    gap: 6rem 0;
+  }
 `;
 
 export const Section = styled.section`
@@ -88,6 +94,7 @@ export const Section = styled.section`
 const RelatedProducts = styled.aside`
   display: flex;
   flex-direction: column;
+  text-align: center;
   grid-column: 2 / 3;
   gap: 3rem;
   width: 100%;
@@ -95,6 +102,12 @@ const RelatedProducts = styled.aside`
   @media (min-width: 768px) {
     flex-direction: row;
     gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  & > h2 {
+    flex-basis: 100%;
+    flex-grow: 1;
   }
 `;
 
